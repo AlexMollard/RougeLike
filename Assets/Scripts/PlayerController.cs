@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 1.0f;
     public Camera cam;
+    public List<List<GameObject>> tiles;
 
     // Start is called before the first frame update
     void Start()

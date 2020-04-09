@@ -18,9 +18,9 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, playerObject.transform.position) < 1.0f)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, playerObject.transform.position, movementSpeed * Time.deltaTime);
-        }
+        //if (Vector2.Distance(transform.position, playerObject.transform.position) < 1.0f)
+        //{
+        //    transform.position = Vector2.MoveTowards(transform.position, playerObject.transform.position, movementSpeed * Time.deltaTime);
+        //}
     }
 }
