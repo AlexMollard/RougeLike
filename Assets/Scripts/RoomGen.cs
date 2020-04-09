@@ -22,7 +22,6 @@ public class RoomGen : MonoBehaviour
     public bool isActiveRoom = false;
     public bool[] hasRoom = { false, false, false, false }; // Up, Right, Down, Left
     Vector3 RoomPos;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +42,7 @@ public class RoomGen : MonoBehaviour
                 Color currentPixel = roomLayout.texture.GetPixel(x + (int)(mapIndex.x * 10), y + (int)(mapIndex.y * 10));
                 int tileIndex = AssignTile(currentPixel);
                 GameObject currentTile = Instantiate(tiles[tileIndex]);
-                currentTile.transform.parent = this.transform;
+                currentTile.transform.parent = (tileIndex != (int)TileType.Player) ? this.transform : null;
                 currentTile.transform.position = new Vector3(RoomPos.x + (x * 0.1f), RoomPos.y + (y * 0.1f));
 
                 objects[x].Add(currentTile);
