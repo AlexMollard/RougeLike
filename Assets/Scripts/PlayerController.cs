@@ -4,42 +4,42 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movementSpeed = 1.0f;
+    Rigidbody2D rb;
+    Animator animator;
+
+    public float movementSpeed = 5.0f;
     public Camera cam;
+
+
     public List<List<GameObject>> tiles;
+
+    Vector2 movement;
+    bool idleRight = true;
+    float horizontalMovement = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
+        cam.transform.position = new Vector3(transform.position.x, transform.position.y, -5);
 
-        Vector2 updatedPos = Vector2.zero;
-        if (Input.GetKey(KeyCode.W))
-        {
-            updatedPos += new Vector2(0, movementSpeed * Time.deltaTime);
-        }
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            updatedPos += new Vector2(0, -movementSpeed * Time.deltaTime);
-        }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            updatedPos += new Vector2(movementSpeed * Time.deltaTime, 0);
-        }
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+    }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            updatedPos += new Vector2(-movementSpeed * Time.deltaTime,0);
-        }
-
-        GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity + updatedPos;
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 }
