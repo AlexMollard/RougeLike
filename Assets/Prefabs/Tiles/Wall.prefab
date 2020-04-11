@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7016390912862988467}
   - component: {fileID: 5548882759353266426}
   - component: {fileID: 8109199722029403449}
+  - component: {fileID: 1802793783713742028}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8790548927548753088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.109362, y: -17.49629, z: -195.21875}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -130,3 +131,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1802793783713742028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8790548927548753088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e615d82a9552097499dfe865e2809fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  topLeft: {fileID: 21300000, guid: 2e6e11d015207ba48bc1e2ac8933c27b, type: 3}
+  topCenter: {fileID: 21300000, guid: a368a77d057bec84da206c3c020d4b1e, type: 3}
+  topRight: {fileID: 21300000, guid: dc7c98fbd2613724a93ff5cbd23d097f, type: 3}
+  middleLeft: {fileID: 21300000, guid: 33daf750f2d9e684996c95fb7295342d, type: 3}
+  middleCenter: {fileID: 21300000, guid: 79ec1e0da578a4148a6fe5baeaf2e376, type: 3}
+  middleRight: {fileID: 21300000, guid: 4c4c40e2788451b4f805e90bffc022eb, type: 3}
+  bottomLeft: {fileID: 21300000, guid: d8f632fc96ce0034db524fef904e237d, type: 3}
+  bottomCenter: {fileID: 21300000, guid: 98db48b34c7101047bf95a51c0f24c5e, type: 3}
+  bottomRight: {fileID: 21300000, guid: 56897b97887d3f744be89499e26332cf, type: 3}

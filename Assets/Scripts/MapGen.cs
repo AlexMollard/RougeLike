@@ -6,25 +6,33 @@ public class MapGen : MonoBehaviour
 {
     public int mapSize = 5;
     public int roomTotal = 8;
+    public float doubleRoomChance = 0.5f;
+    public float doubleHighRoomChance = 0.25f;
+    public float doubleWideRoomChance = 0.25f;
+
     public GameObject emptyTilePrefab;
     public GameObject[] tilePrefabs;
     public Sprite roomLayout;
+    public Sprite largeRoomLayout;
+    public Sprite VertRoomLayout;
     List<List<GameObject>> tiles;
-    int roomSize = 10;
-    List<GameObject> activeRooms = new List<GameObject>();
+    int roomAmountOnSheet = 8;
+
+    int roomSize = 20;
+    float tileScale;
 
     // Start is called before the first frame update
     void Start()
     {
         tiles = new List<List<GameObject>>();
-
+        tileScale = 0.1f;
 
         for (int x = 0; x < mapSize * roomSize; x++)
         {
             tiles.Add(new List<GameObject>());
             for (int y = 0; y < mapSize * roomSize; y++)
             {
-                GameObject currentTile = Instantiate(emptyTilePrefab, new Vector3((x - (mapSize * roomSize) * 0.5f) * 0.1f, (y - (mapSize * roomSize) * 0.5f) * 0.1f), Quaternion.identity, this.transform);
+                GameObject currentTile = Instantiate(emptyTilePrefab, new Vector3((x - (mapSize * roomSize) * 0.5f) * tileScale, (y - (mapSize * roomSize) * 0.5f) * tileScale), Quaternion.identity, this.transform);
                 tiles[x].Add(currentTile);
                 currentTile.GetComponent<TileBehaviour>().tilePos = new Vector2(x, y);
                 currentTile.GetComponent<TileBehaviour>().type = TileType.Empty;
@@ -45,122 +53,321 @@ public class MapGen : MonoBehaviour
             for (int y = 0; y < tiles[x].Count; y++)
             {
                 if (tiles[x][y].GetComponent<TileBehaviour>().type == TileType.Empty)
+                {
+                    tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
+                    continue;
+                }
+
+                TileBehaviour current = tiles[x][y].GetComponent<TileBehaviour>();
+
+                SetWalls(x, y);
+
+                if (GetWallCount(x, y) >= 4)
                     continue;
 
-                bool isWall = false;
+                TileType currentType = current.type;
 
-                if (y % 10 == 0)
-                {
-                    if (y > 0)
-                    {
-                        if (tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Empty)
-                            isWall = true;
-                    }
-                    else
-                    {
-                        if (y == 0)
-                            isWall = true;
-                    }
-                }
+                GameObject currentTile = Instantiate(tilePrefabs[(int)currentType], tiles[x][y].transform.position, Quaternion.identity,tiles[x][y].transform);
+                tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
 
-                if (y % 10 == 9)
-                {
-                    if (y < mapSize * 10 - 1)
-                    {
-                        if (tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Empty)
-                            isWall = true;
-                    }
-                    else
-                    {
-                        if (y == mapSize * 10 - 1)
-                            isWall = true;
-                    }
-                }
-
-                if (x % 10 == 0)
-                {
-                    if (x > 0)
-                    {
-                        if (tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Empty)
-                            isWall = true;
-                    }
-                    else
-                    {
-                        if (x == 0)
-                            isWall = true;
-                    }
-                }
-
-                if (x % 10 == 9)
-                {
-                    if (x < mapSize * 10 - 1)
-                    {
-                        if (tiles[x + 1][y].GetComponent<TileBehaviour>().type == TileType.Empty)
-                            isWall = true;
-                    }
-                    else
-                    {
-                        if (x == mapSize * 10 - 1)
-                            isWall = true;
-                    }
-                }
-
-
-                TileType currentType = tiles[x][y].GetComponent<TileBehaviour>().type;
-                GameObject currentTile = Instantiate(tilePrefabs[(isWall) ? (int)TileType.Wall : (int)currentType], tiles[x][y].transform.position, Quaternion.identity,tiles[x][y].transform);
-
+                // Gives player class tiles for movement and other stuff
                 if (currentType == TileType.Player)
-                {
                     currentTile.GetComponent<PlayerController>().tiles = tiles;
-                }
 
+                // Gives enemy class tiles for movement and other stuff
+                if (currentType == TileType.Enemy)
+                    currentTile.GetComponent<EnemyBehaviour>().tiles = tiles;
+
+                // Places floor under entity
                 if (currentType == TileType.Weapon || currentType == TileType.Player || currentType == TileType.Enemy || currentType == TileType.Health)
-                {
-                    currentTile = Instantiate(tilePrefabs[(int)TileType.Ground], tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
-                }
+                    Instantiate(tilePrefabs[(int)TileType.Ground], tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
 
 
             }
         }
     }
 
+    void SetWalls(int x, int y)
+    {
+        TileBehaviour current = tiles[x][y].GetComponent<TileBehaviour>();
+
+        // Down
+        if (y % roomSize == 0)
+        {
+            if (y > 0)
+            {
+                if (tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Empty)
+                    current.type = TileType.Wall;
+            }
+            else
+            {
+                if (y == 0)
+                    current.type = TileType.Wall;
+            }
+        }
+
+        // Up
+        if (y % roomSize == roomSize - 1)
+        {
+            if (y < mapSize * roomSize - 1)
+            {
+                if (tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Empty)
+                    current.type = TileType.Wall;
+            }
+            else
+            {
+                if (y == mapSize * roomSize - 1)
+                    current.type = TileType.Wall;
+            }
+        }
+
+        // Left
+        if (x % roomSize == 0)
+        {
+            if (x > 0)
+            {
+                if (tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Empty)
+                    current.type = TileType.Wall;
+            }
+            else
+            {
+                if (x == 0)
+                    current.type = TileType.Wall;
+            }
+        }
+
+        // Right
+        if (x % roomSize == roomSize - 1)
+        {
+            if (x < mapSize * roomSize - 1)
+            {
+                if (tiles[x + 1][y].GetComponent<TileBehaviour>().type == TileType.Empty)
+                    current.type = TileType.Wall;
+            }
+            else
+            {
+                if (x == mapSize * roomSize - 1)
+                    current.type = TileType.Wall;
+            }
+        }
+    }
+
+    int GetWallCount(int x, int y)
+    {
+        int totalNonEmptyOrWalls = 0;
+
+        if (x < mapSize * roomSize - 1)
+            if (tiles[x + 1][y].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x + 1][y].GetComponent<TileBehaviour>().type == TileType.Wall)
+                totalNonEmptyOrWalls++;
+
+        if (x > 0)
+            if (tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Wall)
+                totalNonEmptyOrWalls++;
+
+        if (y < mapSize * roomSize - 1)
+            if (tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Wall)
+                totalNonEmptyOrWalls++;
+
+        if (y > 0)
+            if (tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Wall)
+                totalNonEmptyOrWalls++;
+
+
+        if (y == 0 || y == mapSize * roomSize - 1)
+        {
+            totalNonEmptyOrWalls++;
+        }
+        if (x == 0 || x == mapSize * roomSize - 1)
+        {
+            totalNonEmptyOrWalls++;
+        }
+
+        return totalNonEmptyOrWalls;
+    }
+
+
     void SetRooms()
     {
+        List<Vector2> oldRoomIndexes = new List<Vector2>();
         List<GameObject> surroundingRooms = new List<GameObject>();
-        GameObject currentActiveRoom = tiles[Random.Range(0, mapSize) * roomSize][Random.Range(0, mapSize) * roomSize];
+        
+        GameObject currentActiveRoom = tiles[(mapSize / 2) * roomSize][(mapSize / 2) * roomSize];
+        
         Vector2 currentRoomPos = currentActiveRoom.GetComponent<TileBehaviour>().tilePos;
-        activeRooms.Add(currentActiveRoom);
-        Vector2 mapIndex = new Vector2(0, 4);
+        Vector2 mapIndex = new Vector2(0, roomAmountOnSheet - 1);
+        Vector2 normalisedRoomPos = new Vector2((int)currentRoomPos.x / roomSize, (int)currentRoomPos.y / roomSize);
+
+        oldRoomIndexes.Add(mapIndex);
+
+        Room[,] rooms = new Room[mapSize, mapSize];
+        for (int x = 0; x < mapSize; x++)
+        {
+            for (int y = 0; y < mapSize; y++)
+            {
+                rooms[x, y] = new Room();
+            }
+        }
+
 
         for (int i = 0; i < roomTotal; i++)
         {
+            bool canRightRoom = false;
+            bool canUpRoom = false;
+            rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y].Occupied = true;
 
-            if (mapSize * 10 > currentRoomPos.x + 10)
-                if (!activeRooms.Contains(tiles[(int)currentRoomPos.x + 10][(int)currentRoomPos.y]))
-                    surroundingRooms.Add(tiles[(int)currentRoomPos.x + 10][(int)currentRoomPos.y]);
-
-            if (0 <= currentRoomPos.x - 10)
-                if (!activeRooms.Contains(tiles[(int)currentRoomPos.x - 10][(int)currentRoomPos.y]))
-                    surroundingRooms.Add(tiles[(int)currentRoomPos.x - 10][(int)currentRoomPos.y]);
-
-            if (mapSize * 10 > currentRoomPos.y + 10)
-                if (!activeRooms.Contains(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y + 10]))
-                    surroundingRooms.Add(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y + 10]);
-
-            if (0 <= currentRoomPos.y - 10)
-                if (!activeRooms.Contains(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y - 10]))
-                    surroundingRooms.Add(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y - 10]);
-                    
-
-
-            for (int x = 0; x < 10; x++)
-            {
-                for (int y = 0; y < 10; y++)
+            if (mapSize * roomSize > currentRoomPos.x + roomSize)
+                if (rooms[(int)normalisedRoomPos.x + 1, (int)normalisedRoomPos.y].Occupied == false)
                 {
-                    if (tiles[x + (int)currentRoomPos.x][y + (int)currentRoomPos.y].GetComponent<TileBehaviour>().type != TileType.Empty)
-                        break;
-                    
-                    Color currentPixel = roomLayout.texture.GetPixel(x + (int)(mapIndex.x * 10), y + (int)(mapIndex.y * 10));
+                    surroundingRooms.Add(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y]);
+
+                    if (mapSize * roomSize > currentRoomPos.x + (roomSize * 2))
+                        if (rooms[(int)normalisedRoomPos.x + 2, (int)normalisedRoomPos.y].Occupied == false)
+                        {
+                            rooms[(int)normalisedRoomPos.x + 1, (int)normalisedRoomPos.y].SetRight(rooms[(int)normalisedRoomPos.x + 2, (int)normalisedRoomPos.y]);
+                            canRightRoom = true;
+                        }
+                }
+
+
+            if (0 <= currentRoomPos.x - roomSize)
+                if (rooms[(int)normalisedRoomPos.x - 1, (int)normalisedRoomPos.y].Occupied == false)
+                    surroundingRooms.Add(tiles[(int)currentRoomPos.x - roomSize][(int)currentRoomPos.y]);
+
+            if (mapSize * roomSize > currentRoomPos.y + roomSize)
+                if (rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y + 1].Occupied == false)
+                {
+                    surroundingRooms.Add(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y + roomSize]);
+                    if (mapSize * roomSize > currentRoomPos.y + (roomSize * 2))
+                        if (rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y + 2].Occupied == false)
+                        {
+                            rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y + 1].SetRight(rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y + 2]);
+                            canUpRoom = true;
+                        }
+                }
+
+            if (0 <= currentRoomPos.y - roomSize)
+                if (rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y - 1].Occupied == false)
+                    surroundingRooms.Add(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y - roomSize]);
+
+
+            bool buildingRightRoom = false;
+            bool buildingUpRoom = false;
+
+            if (Random.value < doubleRoomChance)
+            {
+
+            }
+
+            if (canRightRoom && i > 0 && Random.value < doubleWideRoomChance)
+            {
+                List<GameObject> placeholderRooms = new List<GameObject>();
+
+                if (mapSize * roomSize > currentRoomPos.x + (roomSize * 2))
+                    if (!surroundingRooms.Contains(tiles[(int)currentRoomPos.x + (roomSize * 2)][(int)currentRoomPos.y]))
+                        if (rooms[(int)normalisedRoomPos.x + 2, (int)normalisedRoomPos.y].Occupied == false)
+                            placeholderRooms.Add(tiles[(int)currentRoomPos.x + (roomSize * 2)][(int)currentRoomPos.y]);
+
+
+                if (mapSize * roomSize > currentRoomPos.x + roomSize)
+                {
+                    if (surroundingRooms.Contains(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y]))
+                    {
+                        surroundingRooms.Remove(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y]);
+                    }
+                    rooms[(int)normalisedRoomPos.x + 1, (int)normalisedRoomPos.y].Occupied = true;
+                }
+
+                if (surroundingRooms.Contains(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y]))
+                    surroundingRooms.Remove(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y]);
+
+                if (mapSize * roomSize > currentRoomPos.y + roomSize)
+                    if (!surroundingRooms.Contains(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y + roomSize]))
+                        if (rooms[(int)normalisedRoomPos.x + 1, (int)normalisedRoomPos.y + 1].Occupied == false)
+                            placeholderRooms.Add(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y + roomSize]);
+
+                if (0 <= currentRoomPos.y - roomSize)
+                    if (!surroundingRooms.Contains(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y - roomSize]))
+                        if (rooms[(int)normalisedRoomPos.x + 1, (int)normalisedRoomPos.y - 1].Occupied == false)
+                            placeholderRooms.Add(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y - roomSize]);
+
+
+                    if (tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y].GetComponent<TileBehaviour>().type == TileType.Empty)
+                    {
+                        buildingRightRoom = true;
+                        surroundingRooms.AddRange(placeholderRooms);
+                        mapIndex = new Vector2(Random.Range(0, roomAmountOnSheet / 2), Random.Range(0, roomAmountOnSheet));
+                    }
+            }
+
+            if (canUpRoom && i > 0 && buildingRightRoom == false && Random.value < doubleHighRoomChance)
+            {
+                List<GameObject> placeholderRooms = new List<GameObject>();
+
+                // Up-Right
+                if (mapSize * roomSize > currentRoomPos.x + roomSize)
+                    if (!surroundingRooms.Contains(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y + roomSize]))
+                        if (rooms[(int)normalisedRoomPos.x + 1, (int)normalisedRoomPos.y + 1].Occupied == false)
+                            placeholderRooms.Add(tiles[(int)currentRoomPos.x + roomSize][(int)currentRoomPos.y + roomSize]);
+
+                // Up-Left
+                if (0 <= currentRoomPos.x - roomSize)
+                    if (!surroundingRooms.Contains(tiles[(int)currentRoomPos.x - roomSize][(int)currentRoomPos.y + roomSize]))
+                        if (rooms[(int)normalisedRoomPos.x - 1, (int)normalisedRoomPos.y + 1].Occupied == false)
+                            placeholderRooms.Add(tiles[(int)currentRoomPos.x - roomSize][(int)currentRoomPos.y + roomSize]);
+
+                // Up
+                if (mapSize * roomSize > currentRoomPos.y + roomSize)
+                {
+                    if (surroundingRooms.Contains(tiles[(int)currentRoomPos.x ][(int)currentRoomPos.y + roomSize]))
+                    {
+                        surroundingRooms.Remove(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y + roomSize]);
+                    }
+                    rooms[(int)normalisedRoomPos.x , (int)normalisedRoomPos.y + 1].Occupied = true;
+                }
+
+                // Current
+                if (surroundingRooms.Contains(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y]))
+                    surroundingRooms.Remove(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y]);
+                
+                // Up-Up
+                if (mapSize * roomSize > currentRoomPos.y + (roomSize * 2))
+                    if (!surroundingRooms.Contains(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y + (roomSize * 2)]))
+                        if (rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y + 2].Occupied == false)
+                            placeholderRooms.Add(tiles[(int)currentRoomPos.x][(int)currentRoomPos.y + (roomSize * 2)]);
+
+
+
+                    if (tiles[(int)currentRoomPos.x][(int)currentRoomPos.y + roomSize].GetComponent<TileBehaviour>().type == TileType.Empty)
+                    {
+                        buildingUpRoom = true;
+                        surroundingRooms.AddRange(placeholderRooms);
+                        mapIndex = new Vector2(Random.Range(0, roomAmountOnSheet), Random.Range(0, roomAmountOnSheet / 2));
+                    }
+            }
+
+
+            int xSize = (buildingRightRoom) ? roomSize * 2 : roomSize;
+            int ySize = (buildingUpRoom) ? roomSize * 2 : roomSize;
+
+
+            for (int x = 0; x < xSize; x++)
+            {
+                for (int y = 0; y < ySize; y++)
+                {
+                    Color currentPixel;
+                    if (buildingRightRoom)
+                    {
+                        currentPixel = largeRoomLayout.texture.GetPixel(x + (int)((mapIndex.x * (roomSize * 2))), y + (int)(mapIndex.y * roomSize));
+                    }
+                    else if (buildingUpRoom)
+                    {
+                        currentPixel = VertRoomLayout.texture.GetPixel(x + (int)((mapIndex.x * roomSize)), y + (int)((mapIndex.y * (roomSize * 2))));
+                    }
+                    else
+                        currentPixel = roomLayout.texture.GetPixel(x + (int)(mapIndex.x * roomSize), y + (int)(mapIndex.y * roomSize));
+
+
+
                     int tileIndex = AssignTile(currentPixel);
 
                     TileBehaviour currentTile = tiles[x + (int)currentRoomPos.x][y + (int)currentRoomPos.y].GetComponent<TileBehaviour>();
@@ -168,22 +375,36 @@ public class MapGen : MonoBehaviour
                 }
             }
 
-            int roomIndex = Random.Range(0, surroundingRooms.Count);
+            int roomIndex = 0;
 
+            for (int s = 0; s < surroundingRooms.Count; s++)
+            {
+                Vector2 tilePos = surroundingRooms[s].GetComponent<TileBehaviour>().tilePos;
+                if (rooms[(int)tilePos.x / roomSize,(int)tilePos.y / roomSize].Occupied == true)
+                {
+                    surroundingRooms.RemoveAt(s);
+                }
+            }
+
+            roomIndex = Random.Range(0, surroundingRooms.Count);
+
+            
             currentRoomPos = surroundingRooms[roomIndex].GetComponent<TileBehaviour>().tilePos;
-            currentActiveRoom = surroundingRooms[roomIndex];
+
+
             surroundingRooms.RemoveAt(roomIndex);
 
-            mapIndex = new Vector2(Random.Range(0, 5), Random.Range(0, 4));
-            activeRooms.Add(currentActiveRoom);
-        }
-    }
+            mapIndex = new Vector2(Random.Range(0, roomAmountOnSheet), Random.Range(0, roomAmountOnSheet));
+            while (oldRoomIndexes.Contains(mapIndex))
+            {
+                mapIndex = new Vector2(Random.Range(0, roomAmountOnSheet), Random.Range(0, roomAmountOnSheet));
+            }
 
-    void WallOverRide(int x, int y)
-    {
-        //GameObject currentTile = Instantiate(tiles[(int)TileType.Wall]);
-        //currentTile.transform.parent = this.transform;
-        //currentTile.transform.position = new Vector3(RoomPos.x + (x * 0.1f), RoomPos.y + (y * 0.1f));
+            normalisedRoomPos = new Vector2((int)currentRoomPos.x / roomSize, (int)currentRoomPos.y / roomSize);
+            rooms[(int)normalisedRoomPos.x, (int)normalisedRoomPos.y].Occupied = true;
+            oldRoomIndexes.Add(mapIndex); 
+
+        }
     }
 
     int AssignTile(Color currentPixel)
@@ -213,6 +434,13 @@ public class MapGen : MonoBehaviour
             return (int)TileType.Player;
         }
 
-        return (int)TileType.Ground;
+        if (currentPixel.r == 1 && currentPixel.g == 1 && currentPixel.b == 1)
+        {
+            return (int)TileType.Ground;
+        }
+
+        return (int)TileType.Empty;
     }
+
 }
+

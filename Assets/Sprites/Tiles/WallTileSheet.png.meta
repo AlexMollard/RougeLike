@@ -1,82 +1,157 @@
 fileFormatVersion: 2
-guid: d622b2344f901354bba6915a13a30de3
+guid: 953189ae232d51946a72a7afb5d5437d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1928019684227712098
-    second: RoomTileSheet_0
+      213: 8577376489570171150
+    second: WallTileSheet_0
   - first:
-      213: -1136024112629926908
-    second: RoomTileSheet_1
+      213: 8577008752113567413
+    second: WallTileSheet_1
   - first:
-      213: -7754743136337572122
-    second: RoomTileSheet_2
+      213: 4716005053076534131
+    second: WallTileSheet_2
   - first:
-      213: -2148774975945646636
-    second: RoomTileSheet_3
+      213: -2659419220952987036
+    second: WallTileSheet_3
   - first:
-      213: 7329105423733902154
-    second: RoomTileSheet_4
+      213: 6153089498378995296
+    second: WallTileSheet_4
   - first:
-      213: -2101915594201060129
-    second: RoomTileSheet_5
+      213: -5926561680964306121
+    second: WallTileSheet_5
   - first:
-      213: 7063683845328698953
-    second: RoomTileSheet_6
+      213: 488498850907225063
+    second: WallTileSheet_6
   - first:
-      213: 309519874579272170
-    second: RoomTileSheet_7
+      213: -3934013953705128615
+    second: WallTileSheet_7
   - first:
-      213: 8667810359665977508
-    second: RoomTileSheet_8
+      213: -2675965353282520267
+    second: WallTileSheet_8
   - first:
-      213: -8858326377358297828
-    second: RoomTileSheet_9
+      213: -9025146345786170851
+    second: WallTileSheet_9
   - first:
-      213: 7647495897147413926
-    second: RoomTileSheet_10
+      213: -887965531901137381
+    second: WallTileSheet_10
   - first:
-      213: -7838623173018352882
-    second: RoomTileSheet_11
+      213: -2456905791411330877
+    second: WallTileSheet_11
   - first:
-      213: -7090460830541889625
-    second: RoomTileSheet_12
+      213: 6759211459818928123
+    second: WallTileSheet_12
   - first:
-      213: -1920287809148467479
-    second: RoomTileSheet_13
+      213: 5764604087877229383
+    second: WallTileSheet_13
   - first:
-      213: 5366192312404442402
-    second: RoomTileSheet_14
+      213: -2222539162271702655
+    second: WallTileSheet_14
   - first:
-      213: 3700637997403734806
-    second: RoomTileSheet_15
+      213: 7994084765638990311
+    second: WallTileSheet_15
   - first:
-      213: -1241932250432266098
-    second: RoomTileSheet_16
+      213: 1089579522820780486
+    second: WallTileSheet_16
   - first:
-      213: 6467428218889990694
-    second: RoomTileSheet_17
+      213: 7445172134030440058
+    second: WallTileSheet_17
   - first:
-      213: -8281526017035066065
-    second: RoomTileSheet_18
+      213: 2099311220667317629
+    second: WallTileSheet_18
   - first:
-      213: 5850514686564995447
-    second: RoomTileSheet_19
+      213: -4942615152398005051
+    second: WallTileSheet_19
   - first:
-      213: -1000322348611241391
-    second: RoomTileSheet_20
+      213: 8773933975852640801
+    second: WallTileSheet_20
   - first:
-      213: -3195829443736945741
-    second: RoomTileSheet_21
+      213: -2773514781625557243
+    second: WallTileSheet_21
   - first:
-      213: 2878413562463107168
-    second: RoomTileSheet_22
+      213: 6830151022359710984
+    second: WallTileSheet_22
   - first:
-      213: -1316456592583531463
-    second: RoomTileSheet_23
+      213: 4463079531898199932
+    second: WallTileSheet_23
   - first:
-      213: 9191989444126770113
-    second: RoomTileSheet_24
+      213: -2803019446762900586
+    second: WallTileSheet_24
+  - first:
+      213: -3594401556108936548
+    second: WallTileSheet_0
+  - first:
+      213: -69516545023412620
+    second: WallTileSheet_1
+  - first:
+      213: -1152484866840298999
+    second: WallTileSheet_2
+  - first:
+      213: -6318060572236348821
+    second: WallTileSheet_3
+  - first:
+      213: 8621909883554954586
+    second: WallTileSheet_4
+  - first:
+      213: -5898311689655690675
+    second: WallTileSheet_5
+  - first:
+      213: -4113577445612636498
+    second: WallTileSheet_6
+  - first:
+      213: -2245452152734907514
+    second: WallTileSheet_7
+  - first:
+      213: 1724393640819833983
+    second: WallTileSheet_8
+  - first:
+      213: -6054324553785810536
+    second: WallTileSheet_9
+  - first:
+      213: -5718177180005258604
+    second: WallTileSheet_10
+  - first:
+      213: -7561649655772716562
+    second: WallTileSheet_11
+  - first:
+      213: -584507429754905919
+    second: WallTileSheet_12
+  - first:
+      213: 2330949788854294510
+    second: WallTileSheet_13
+  - first:
+      213: 829911841959801549
+    second: WallTileSheet_14
+  - first:
+      213: 5796125557422799903
+    second: WallTileSheet_15
+  - first:
+      213: -8793650688136298238
+    second: WallTileSheet_16
+  - first:
+      213: -6748559480061679527
+    second: WallTileSheet_17
+  - first:
+      213: -6823636933943752799
+    second: WallTileSheet_18
+  - first:
+      213: 930636105739273807
+    second: WallTileSheet_19
+  - first:
+      213: -5544815020039096489
+    second: WallTileSheet_20
+  - first:
+      213: -3967142834266391922
+    second: WallTileSheet_21
+  - first:
+      213: -5280747710596182523
+    second: WallTileSheet_22
+  - first:
+      213: 662433343510120197
+    second: WallTileSheet_23
+  - first:
+      213: 4633680491507193244
+    second: WallTileSheet_24
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,7 +170,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
@@ -115,14 +190,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
+  spriteMode: 2
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -138,7 +213,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -150,7 +225,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -162,7 +237,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -174,7 +249,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -186,7 +261,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -197,526 +272,526 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: RoomTileSheet_0
+      name: WallTileSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 40
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2648a5e00b3b1ca10800000000000000
-      internalID: 1928019684227712098
+      spriteID: c9af30424de1e1ec0800000000000000
+      internalID: -3594401556108936548
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_1
+      name: WallTileSheet_1
       rect:
         serializedVersion: 2
         x: 10
         y: 40
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4043a66a6180c30f0800000000000000
-      internalID: -1136024112629926908
+      spriteID: 476fdd31217090ff0800000000000000
+      internalID: -69516545023412620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_2
+      name: WallTileSheet_2
       rect:
         serializedVersion: 2
         x: 20
         y: 40
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ee4332343e916490800000000000000
-      internalID: -7754743136337572122
+      spriteID: 90a78f6ae1d8100f0800000000000000
+      internalID: -1152484866840298999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_3
+      name: WallTileSheet_3
       rect:
         serializedVersion: 2
         x: 30
         y: 40
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ddd2884b840e22e0800000000000000
-      internalID: -2148774975945646636
+      spriteID: b628372526db158a0800000000000000
+      internalID: -6318060572236348821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_4
+      name: WallTileSheet_4
       rect:
         serializedVersion: 2
         x: 40
         y: 40
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4b4c073d8636b560800000000000000
-      internalID: 7329105423733902154
+      spriteID: a5df8b6bb5d27a770800000000000000
+      internalID: 8621909883554954586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_5
+      name: WallTileSheet_5
       rect:
         serializedVersion: 2
         x: 0
         y: 30
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdcaacb47ee74d2e0800000000000000
-      internalID: -2101915594201060129
+      spriteID: d4ad983d4ccf42ea0800000000000000
+      internalID: -5898311689655690675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_6
+      name: WallTileSheet_6
       rect:
         serializedVersion: 2
         x: 10
         y: 30
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94e7b76480f370260800000000000000
-      internalID: 7063683845328698953
+      spriteID: ea6333e9b13a9e6c0800000000000000
+      internalID: -4113577445612636498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_7
+      name: WallTileSheet_7
       rect:
         serializedVersion: 2
         x: 20
         y: 30
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae1983f9fa2ab4400800000000000000
-      internalID: 309519874579272170
+      spriteID: 683891cf92d86d0e0800000000000000
+      internalID: -2245452152734907514
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_8
+      name: WallTileSheet_8
       rect:
         serializedVersion: 2
         x: 30
         y: 30
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a8675c199f3a4870800000000000000
-      internalID: 8667810359665977508
+      spriteID: f7c320e41e64ee710800000000000000
+      internalID: 1724393640819833983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_9
+      name: WallTileSheet_9
       rect:
         serializedVersion: 2
         x: 40
         y: 30
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c15f51dd717e01580800000000000000
-      internalID: -8858326377358297828
+      spriteID: 891eba045e7bafba0800000000000000
+      internalID: -6054324553785810536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_10
+      name: WallTileSheet_10
       rect:
         serializedVersion: 2
         x: 0
         y: 20
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a59ab2100d512a60800000000000000
-      internalID: 7647495897147413926
+      spriteID: 49aaa07a624f4a0b0800000000000000
+      internalID: -5718177180005258604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_11
+      name: WallTileSheet_11
       rect:
         serializedVersion: 2
         x: 10
         y: 20
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e03881441cd973390800000000000000
-      internalID: -7838623173018352882
+      spriteID: ee166bf83bf9f0790800000000000000
+      internalID: -7561649655772716562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_12
+      name: WallTileSheet_12
       rect:
         serializedVersion: 2
         x: 20
         y: 20
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7afbab5017f999d90800000000000000
-      internalID: -7090460830541889625
+      spriteID: 1cad1e8e69963e7f0800000000000000
+      internalID: -584507429754905919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_13
+      name: WallTileSheet_13
       rect:
         serializedVersion: 2
         x: 30
         y: 20
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e641356964c955e0800000000000000
-      internalID: -1920287809148467479
+      spriteID: ee79ee9ab72395020800000000000000
+      internalID: 2330949788854294510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_14
+      name: WallTileSheet_14
       rect:
         serializedVersion: 2
         x: 40
         y: 20
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22d7c411a7b887a40800000000000000
-      internalID: 5366192312404442402
+      spriteID: dc277e65c60748b00800000000000000
+      internalID: 829911841959801549
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_15
+      name: WallTileSheet_15
       rect:
         serializedVersion: 2
         x: 0
         y: 10
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 613009dd6ae4b5330800000000000000
-      internalID: 3700637997403734806
+      spriteID: f1cbfbb3c79ff6050800000000000000
+      internalID: 5796125557422799903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_16
+      name: WallTileSheet_16
       rect:
         serializedVersion: 2
         x: 10
         y: 10
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8022e1c235c3cee0800000000000000
-      internalID: -1241932250432266098
+      spriteID: 20144c63a4da6f580800000000000000
+      internalID: -8793650688136298238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_17
+      name: WallTileSheet_17
       rect:
         serializedVersion: 2
         x: 20
         y: 10
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 622764df2bbe0c950800000000000000
-      internalID: 6467428218889990694
+      spriteID: 958245588ec4852a0800000000000000
+      internalID: -6748559480061679527
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_18
+      name: WallTileSheet_18
       rect:
         serializedVersion: 2
         x: 30
         y: 10
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f25287407fb121d80800000000000000
-      internalID: -8281526017035066065
+      spriteID: 1a70c0c9c529d41a0800000000000000
+      internalID: -6823636933943752799
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_19
+      name: WallTileSheet_19
       rect:
         serializedVersion: 2
         x: 40
         y: 10
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77199ed2c14313150800000000000000
-      internalID: 5850514686564995447
+      spriteID: f460eb18b984aec00800000000000000
+      internalID: 930636105739273807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_20
+      name: WallTileSheet_20
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15a7426bf142e12f0800000000000000
-      internalID: -1000322348611241391
+      spriteID: 757b151fd1cdc03b0800000000000000
+      internalID: -5544815020039096489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_21
+      name: WallTileSheet_21
       rect:
         serializedVersion: 2
         x: 10
         y: 0
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3bb335b9d0226a3d0800000000000000
-      internalID: -3195829443736945741
+      spriteID: e8ab05e6c90e1f8c0800000000000000
+      internalID: -3967142834266391922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_22
+      name: WallTileSheet_22
       rect:
         serializedVersion: 2
         x: 20
         y: 0
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 068b74372ed22f720800000000000000
-      internalID: 2878413562463107168
+      spriteID: 50e05719fe307b6b0800000000000000
+      internalID: -5280747710596182523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_23
+      name: WallTileSheet_23
       rect:
         serializedVersion: 2
         x: 30
         y: 0
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93466d434b10bbde0800000000000000
-      internalID: -1316456592583531463
+      spriteID: 5078b4fbd9f613900800000000000000
+      internalID: 662433343510120197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RoomTileSheet_24
+      name: WallTileSheet_24
       rect:
         serializedVersion: 2
         x: 40
         y: 0
         width: 10
         height: 10
-      alignment: 1
-      pivot: {x: 0, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c3015cb2b1809f70800000000000000
-      internalID: 9191989444126770113
+      spriteID: c9591f25bd32e4040800000000000000
+      internalID: 4633680491507193244
       vertices: []
       indices: 
       edges: []

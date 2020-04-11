@@ -650,7 +650,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.5
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1281,6 +1281,24 @@ PrefabInstance:
       propertyPath: roomTotal
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: roomLayout
+      value: 
+      objectReference: {fileID: 21300000, guid: d622b2344f901354bba6915a13a30de3,
+        type: 3}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: largeRoomLayout
+      value: 
+      objectReference: {fileID: 21300000, guid: 676980df0ec21944fb176e0504c8394e,
+        type: 3}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: VertRoomLayout
+      value: 
+      objectReference: {fileID: 21300000, guid: 4545d569d14549849bb5715e75bb45cf,
+        type: 3}
     - target: {fileID: 6031499144275636495, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
       propertyPath: m_Name
