@@ -10,7 +10,8 @@ public enum TileType
     Enemy,
     Weapon,
     Health,
-    Player
+    Player,
+    Planks
 }
 
 public class RoomGen : MonoBehaviour
@@ -23,12 +24,5 @@ public class RoomGen : MonoBehaviour
     public bool isActiveRoom = false;
     public bool[] hasRoom = { false, false, false, false }; // Up, Right, Down, Left
     Vector3 RoomPos;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-
-
-    }
 
 }

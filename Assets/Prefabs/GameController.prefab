@@ -45,6 +45,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapSize: 5
   roomTotal: 5
+  doubleRoomChance: 0.5
+  doubleHighRoomChance: 0.25
+  doubleWideRoomChance: 0.25
+  typeColors:
+  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 0, g: 0, b: 1, a: 0}
+  - {r: 0, g: 1, b: 0, a: 0}
+  - {r: 1, g: 0, b: 1, a: 0}
+  - {r: 0, g: 1, b: 1, a: 0}
+  - {r: 0.4, g: 0.3, b: 0.2, a: 0}
   emptyTilePrefab: {fileID: 2202312360390123838, guid: 2cabde84554fbb24f9901092353d0935,
     type: 3}
   tilePrefabs:
@@ -54,5 +66,8 @@ MonoBehaviour:
   - {fileID: 2184372673118449099, guid: 8cba84d0d7726514183a28bcb44fb207, type: 3}
   - {fileID: 8982397402293039270, guid: f4f1be559f0173341b2612ff5db369a3, type: 3}
   - {fileID: 1125139930586663470, guid: 5076e83e5667bc946a7ea6bec59ecc32, type: 3}
-  roomLayout: {fileID: 1928019684227712098, guid: d622b2344f901354bba6915a13a30de3,
-    type: 3}
+  - {fileID: 3473372039558087851, guid: 5ca34f99f75b593409f0b896a4572e22, type: 3}
+  - {fileID: 6931744843311138007, guid: 721b9bbe631c4e04a9bd04b0fd1da4fa, type: 3}
+  roomLayout: {fileID: 21300000, guid: d622b2344f901354bba6915a13a30de3, type: 3}
+  largeRoomLayout: {fileID: 21300000, guid: 676980df0ec21944fb176e0504c8394e, type: 3}
+  VertRoomLayout: {fileID: 21300000, guid: 4545d569d14549849bb5715e75bb45cf, type: 3}

@@ -4,31 +4,31 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    Rigidbody2D rb;
-    Animator animator;
+    public Rigidbody2D rb;
+    public Animator animator;
+    public bool isShadow = false;
 
     public float movementSpeed = 5.0f;
     public Camera cam;
-
+    float speed;
 
     public List<List<GameObject>> tiles;
 
     Vector2 movement;
-    bool idleRight = true;
-    float horizontalMovement = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        cam.transform.position = new Vector3(transform.position.x, transform.position.y, -5);
+        if (Input.GetKey(KeyCode.LeftShift))
+            speed = movementSpeed * 2;
+        else
+            speed = movementSpeed;
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -36,10 +36,16 @@ public class PlayerController : MonoBehaviour
 
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        if (isShadow)
+            return;
+        
+        cam.transform.position = new Vector3(transform.position.x, transform.position.y, -5);
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * movementSpeed * Time.fixedDeltaTime);
+        if (!isShadow)
+            rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
     }
 }

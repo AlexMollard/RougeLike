@@ -10,6 +10,8 @@ public class MapGen : MonoBehaviour
     public float doubleHighRoomChance = 0.25f;
     public float doubleWideRoomChance = 0.25f;
 
+    public Color[] typeColors;
+
     public GameObject emptyTilePrefab;
     public GameObject[] tilePrefabs;
     public Sprite roomLayout;
@@ -18,7 +20,7 @@ public class MapGen : MonoBehaviour
     List<List<GameObject>> tiles;
     int roomAmountOnSheet = 8;
 
-    int roomSize = 20;
+    int roomSize = 40;
     float tileScale;
 
     // Start is called before the first frame update
@@ -62,13 +64,18 @@ public class MapGen : MonoBehaviour
 
                 SetWalls(x, y);
 
-                if (GetWallCount(x, y) >= 8)
-                    continue;
+               // if (GetWallCount(x, y) >= 5)
+               // {
+               //     current.type = TileType.Empty;
+               //     continue;
+               // }
 
                 TileType currentType = current.type;
 
                 GameObject currentTile = Instantiate(tilePrefabs[(int)currentType], tiles[x][y].transform.position, Quaternion.identity,tiles[x][y].transform);
                 tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
+
+                tiles[x][y].GetComponent<TileBehaviour>().tile = currentTile;
 
                 // Gives player class tiles for movement and other stuff
                 if (currentType == TileType.Player)
@@ -85,6 +92,70 @@ public class MapGen : MonoBehaviour
 
             }
         }
+
+        for (int x = 0; x < tiles.Count; x++)
+        {
+            for (int y = 0; y < tiles[x].Count; y++)
+            {
+                if (tiles[x][y].GetComponent<TileBehaviour>().type != TileType.Wall)
+                    continue;
+
+                GameObject current = tiles[x][y].GetComponent<TileBehaviour>().tile;
+
+                SetWallSprite(x, y, current);
+            }
+        }
+    }
+
+    void SetWallSprite(int x, int y, GameObject currentTile)
+    {
+        if (currentTile == null)
+        {
+        Debug.LogError("It was null " + x + ", "+ y);
+            return;
+
+        }
+        WallBehaviour wall = currentTile.GetComponent<WallBehaviour>();
+
+        bool top = false, right = false, bottom = false, left = false, floorAbove = false, floorBelow = false, floorRight = false, floorLeft = false;
+
+        if (x < mapSize * roomSize - 1)
+        {
+            if (tiles[x + 1][y].GetComponent<TileBehaviour>().type == TileType.Wall)
+                right = true;
+
+
+            if (tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Empty)
+                floorRight = true;
+        }
+
+        if (x > 0)
+        {
+            if (tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Wall)
+                left = true;
+
+            if (tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Empty)
+                floorLeft = true;
+        }
+
+        if (y < mapSize * roomSize - 1)
+        {
+            if (tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Wall)
+                top = true;
+
+            if (tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty)
+                floorAbove = true;
+        }
+
+        if (y > 0)
+        {
+            if (tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Wall)
+                bottom = true;
+
+            if (tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty)
+                floorBelow = true;
+        }
+        wall.SetWall(top, right, bottom, left, floorAbove, floorBelow, floorRight, floorLeft);
     }
 
     void SetWalls(int x, int y)
@@ -277,11 +348,6 @@ public class MapGen : MonoBehaviour
             bool buildingRightRoom = false;
             bool buildingUpRoom = false;
 
-            if (Random.value < doubleRoomChance)
-            {
-
-            }
-
             if (canRightRoom && i > 0 && Random.value < doubleWideRoomChance)
             {
                 List<GameObject> placeholderRooms = new List<GameObject>();
@@ -433,37 +499,33 @@ public class MapGen : MonoBehaviour
 
     int AssignTile(Color currentPixel)
     {
-        if (currentPixel.r == 0 && currentPixel.g == 0 && currentPixel.b == 0)
-        {
-            return (int)TileType.Wall;
-        }
 
-        if (currentPixel.r == 1 && currentPixel.g == 0 && currentPixel.b == 0)
+        for (int i = 0; i < typeColors.Length; i++)
         {
-            return (int)TileType.Enemy;
-        }
-
-        if (currentPixel.r == 0 && currentPixel.g == 0 && currentPixel.b == 1)
-        {
-            return (int)TileType.Weapon;
-        }
-
-        if (currentPixel.r == 0 && currentPixel.g == 1 && currentPixel.b == 0)
-        {
-            return (int)TileType.Health;
-        }
-
-        if (currentPixel.r == 1 && currentPixel.g == 0 && currentPixel.b == 1)
-        {
-            return (int)TileType.Player;
-        }
-
-        if (currentPixel.r == 1 && currentPixel.g == 1 && currentPixel.b == 1)
-        {
-            return (int)TileType.Ground;
+            if (TestColor(currentPixel, typeColors[i]))
+            {
+                return i;
+            }
         }
 
         return (int)TileType.Empty;
+    }
+
+    bool TestColor(Color pixel, Color type)
+    {
+        float threshhold = 0.05f;
+        if (pixel.r < type.r + threshhold &&
+            pixel.r > type.r - threshhold &&
+            pixel.g < type.g + threshhold &&
+            pixel.g > type.g - threshhold &&
+            pixel.b < type.b + threshhold &&
+            pixel.b > type.b - threshhold)
+        {
+            return true;
+        }
+
+
+        return false;
     }
 
 }

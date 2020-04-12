@@ -71,9 +71,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -364397715
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d89a82a24a677834893d371b97cd0acc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b3be2f61876039147a2a56389c91da90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -143,12 +143,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e615d82a9552097499dfe865e2809fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topLeft: {fileID: 21300000, guid: 2e6e11d015207ba48bc1e2ac8933c27b, type: 3}
-  topCenter: {fileID: 21300000, guid: a368a77d057bec84da206c3c020d4b1e, type: 3}
-  topRight: {fileID: 21300000, guid: dc7c98fbd2613724a93ff5cbd23d097f, type: 3}
-  middleLeft: {fileID: 21300000, guid: 33daf750f2d9e684996c95fb7295342d, type: 3}
-  middleCenter: {fileID: 21300000, guid: 79ec1e0da578a4148a6fe5baeaf2e376, type: 3}
-  middleRight: {fileID: 21300000, guid: 4c4c40e2788451b4f805e90bffc022eb, type: 3}
-  bottomLeft: {fileID: 21300000, guid: d8f632fc96ce0034db524fef904e237d, type: 3}
-  bottomCenter: {fileID: 21300000, guid: 98db48b34c7101047bf95a51c0f24c5e, type: 3}
-  bottomRight: {fileID: 21300000, guid: 56897b97887d3f744be89499e26332cf, type: 3}
+  topLeft: {fileID: 21300000, guid: a1a116154411a3d44adde9ef85515a35, type: 3}
+  topCenter: {fileID: 21300000, guid: 44eb60f0a54b53e4097390d0fea65502, type: 3}
+  topRight: {fileID: 21300000, guid: 20d6b80906183b24f9c65af8780c4b2b, type: 3}
+  topInnerLeft: {fileID: 21300000, guid: 4c46f86fd6132a04d8f4f3ac6ca0a1fb, type: 3}
+  topInnerRight: {fileID: 21300000, guid: 8148ac4d21ed6984f9decb68cf0807fc, type: 3}
+  middleLeft: {fileID: 21300000, guid: a0dcbc9682b8e6a49becf564e3f5a73d, type: 3}
+  middleRight: {fileID: 21300000, guid: f0c7506b5fa3ed843a250c87a6a525ff, type: 3}
+  bottomLeft: {fileID: 21300000, guid: 2196b20302a99604c84dffbdde5aaafa, type: 3}
+  bottomCenter: {fileID: 21300000, guid: b3be2f61876039147a2a56389c91da90, type: 3}
+  bottomRight: {fileID: 21300000, guid: 2b02a3e0a8c5880408b3ac45d6d19ed7, type: 3}
+  bottomInnerLeft: {fileID: 21300000, guid: 3a8c9c7154a246048951db603aa6091d, type: 3}
+  bottomInnerRight: {fileID: 21300000, guid: c7c65241cde6ca04fa1666580fbcf120, type: 3}

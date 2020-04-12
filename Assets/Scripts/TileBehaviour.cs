@@ -6,4 +6,5 @@ public class TileBehaviour : MonoBehaviour
 {
     public Vector2 tilePos;
     public TileType type = TileType.Ground;
+    public GameObject tile;
 }
