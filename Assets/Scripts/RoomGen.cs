@@ -12,7 +12,8 @@ public enum TileType
     Health,
     Player,
     Planks,
-    Grass
+    Grass,
+    Tree
 }
 
 public class RoomGen : MonoBehaviour

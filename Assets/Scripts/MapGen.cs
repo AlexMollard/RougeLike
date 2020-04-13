@@ -90,16 +90,15 @@ public class MapGen : MonoBehaviour
 
                 tiles[x][y].GetComponent<TileBehaviour>().tile = currentTile;
 
-                // Gives player class tiles for movement and other stuff
-                if (currentType == TileType.Player)
-                    currentTile.GetComponent<PlayerController>().tiles = tiles;
+                if (currentType == TileType.Tree)
+                {
+                    currentTile.GetComponent<TreeBehaviour>().tiles = tiles;
+                    currentTile.GetComponent<TreeBehaviour>().pos = new Vector2(x,y);
+                }
 
-                // Gives enemy class tiles for movement and other stuff
-                if (currentType == TileType.Enemy)
-                    currentTile.GetComponent<EnemyBehaviour>().tiles = tiles;
 
                 // Places floor under entity (NEEDS TO BE UPDATED FOR MORE THEN ONE DIFFRENT GROUND TYPE)
-                if (currentType == TileType.Weapon || currentType == TileType.Player || currentType == TileType.Enemy || currentType == TileType.Health)
+                if (currentType != TileType.Ground && currentType != TileType.Grass && currentType != TileType.Empty && currentType != TileType.Wall && currentType != TileType.Planks)
                     Instantiate(tilePrefabs[(int)TileType.Grass], tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
 
 
