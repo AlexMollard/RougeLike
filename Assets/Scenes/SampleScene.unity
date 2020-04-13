@@ -240,6 +240,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1806741985631137340, guid: 49ff10a4892851349830694ae4c53772,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1806741985631137341, guid: 49ff10a4892851349830694ae4c53772,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -377,12 +382,12 @@ PrefabInstance:
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
       propertyPath: tilePrefabs.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
       propertyPath: typeColors.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
@@ -404,7 +409,7 @@ PrefabInstance:
         type: 3}
       propertyPath: largeRoomLayout
       value: 
-      objectReference: {fileID: 21300000, guid: 676980df0ec21944fb176e0504c8394e,
+      objectReference: {fileID: 21300000, guid: 391a5be70d004e649a6443436a7517ba,
         type: 3}
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
@@ -427,22 +432,58 @@ PrefabInstance:
         type: 3}
       propertyPath: tilePrefabs.Array.data[7]
       value: 
-      objectReference: {fileID: 6931744843311138007, guid: 721b9bbe631c4e04a9bd04b0fd1da4fa,
+      objectReference: {fileID: 9002524105473580752, guid: 135d730da71d0064781e54be8e89185d,
         type: 3}
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
       propertyPath: typeColors.Array.data[6].r
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
       propertyPath: typeColors.Array.data[6].g
-      value: 0.29803923
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
       propertyPath: typeColors.Array.data[6].b
-      value: 0.2
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: tilePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 2299267809968187866, guid: 437549254b9ac8e409d628782a91452b,
+        type: 3}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: typeColors.Array.data[7].g
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: typeColors.Array.data[7].r
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: typeColors.Array.data[7].b
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: typeColors.Array.data[0].r
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: typeColors.Array.data[0].g
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: typeColors.Array.data[0].b
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6031499144275636495, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
@@ -523,5 +564,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7598792315052370708, guid: c0d002d55113a7243af4a4954692f359,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0d002d55113a7243af4a4954692f359, type: 3}

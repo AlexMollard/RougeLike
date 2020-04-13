@@ -54,6 +54,19 @@ public class MapGen : MonoBehaviour
         {
             for (int y = 0; y < tiles[x].Count; y++)
             {
+                if (tiles[x][y].GetComponent<TileBehaviour>().type != TileType.Empty)
+                    continue;
+
+                if (GetGroundCount(x, y) > 0)
+                    tiles[x][y].GetComponent<TileBehaviour>().type = TileType.Wall;
+            }
+        }
+
+
+        for (int x = 0; x < tiles.Count; x++)
+        {
+            for (int y = 0; y < tiles[x].Count; y++)
+            {
                 if (tiles[x][y].GetComponent<TileBehaviour>().type == TileType.Empty)
                 {
                     tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
@@ -64,15 +77,15 @@ public class MapGen : MonoBehaviour
 
                 SetWalls(x, y);
 
-               // if (GetWallCount(x, y) >= 5)
-               // {
-               //     current.type = TileType.Empty;
-               //     continue;
-               // }
+                // if (GetWallCount(x, y) >= 5)
+                // {
+                //     current.type = TileType.Empty;
+                //     continue;
+                // }
 
                 TileType currentType = current.type;
 
-                GameObject currentTile = Instantiate(tilePrefabs[(int)currentType], tiles[x][y].transform.position, Quaternion.identity,tiles[x][y].transform);
+                GameObject currentTile = Instantiate(tilePrefabs[(int)currentType], tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
                 tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
 
                 tiles[x][y].GetComponent<TileBehaviour>().tile = currentTile;
@@ -85,9 +98,9 @@ public class MapGen : MonoBehaviour
                 if (currentType == TileType.Enemy)
                     currentTile.GetComponent<EnemyBehaviour>().tiles = tiles;
 
-                // Places floor under entity
+                // Places floor under entity (NEEDS TO BE UPDATED FOR MORE THEN ONE DIFFRENT GROUND TYPE)
                 if (currentType == TileType.Weapon || currentType == TileType.Player || currentType == TileType.Enemy || currentType == TileType.Health)
-                    Instantiate(tilePrefabs[(int)TileType.Ground], tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
+                    Instantiate(tilePrefabs[(int)TileType.Grass], tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
 
 
             }
@@ -223,61 +236,51 @@ public class MapGen : MonoBehaviour
         }
     }
 
-    int GetWallCount(int x, int y)
+    int GetGroundCount(int x, int y)
     {
-        int totalNonEmptyOrWalls = 0;
+        int totalGroundTiles = 0;
 
         if (x < mapSize * roomSize - 1)
-            if (tiles[x + 1][y].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x + 1][y].GetComponent<TileBehaviour>().type == TileType.Wall)
-                totalNonEmptyOrWalls++;
+            if (tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Wall)
+                totalGroundTiles++;
 
         if (x > 0)
-            if (tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Wall)
-                totalNonEmptyOrWalls++;
+            if (tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Wall)
+                totalGroundTiles++;
 
         if (y < mapSize * roomSize - 1)
         {
-            if (tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Wall)
-                totalNonEmptyOrWalls++;
+            if (tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall)
+                totalGroundTiles++;
 
             // Top - Left
             if (x > 0)
-                if (tiles[x - 1][y + 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x - 1][y + 1].GetComponent<TileBehaviour>().type == TileType.Wall)
-                    totalNonEmptyOrWalls++;
+                if (tiles[x - 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x - 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall)
+                    totalGroundTiles++;
 
             // Top - Right
             if (x < mapSize * roomSize - 1)
-                if (tiles[x + 1][y + 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x + 1][y + 1].GetComponent<TileBehaviour>().type == TileType.Wall)
-                    totalNonEmptyOrWalls++;
+                if (tiles[x + 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x + 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall)
+                    totalGroundTiles++;
         }
 
         if (y > 0)
         {
-            if (tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Wall)
-                totalNonEmptyOrWalls++;
+            if (tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall)
+                totalGroundTiles++;
 
             // Bottom - Left
             if (x > 0)
-                if (tiles[x - 1][y - 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x - 1][y - 1].GetComponent<TileBehaviour>().type == TileType.Wall)
-                    totalNonEmptyOrWalls++;
+                if (tiles[x - 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x - 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall)
+                    totalGroundTiles++;
 
             // Bottom - Right
             if (x < mapSize * roomSize - 1)
-                if (tiles[x + 1][y - 1].GetComponent<TileBehaviour>().type == TileType.Empty || tiles[x + 1][y - 1].GetComponent<TileBehaviour>().type == TileType.Wall)
-                    totalNonEmptyOrWalls++;
+                if (tiles[x + 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x + 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall)
+                    totalGroundTiles++;
         }
 
-
-        if (y == 0 || y == mapSize * roomSize - 1)
-        {
-            totalNonEmptyOrWalls++;
-        }
-        if (x == 0 || x == mapSize * roomSize - 1)
-        {
-            totalNonEmptyOrWalls++;
-        }
-
-        return totalNonEmptyOrWalls;
+        return totalGroundTiles;
     }
 
 
