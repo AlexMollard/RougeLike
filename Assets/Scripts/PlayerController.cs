@@ -50,12 +50,44 @@ public class PlayerController : MonoBehaviour
         if (movement.x != 0)
             isRight = movement.x;
 
-        heldObject.transform.localPosition = new Vector2(0.05f * -isRight, heldObject.transform.localPosition.y);
+        if (heldObject)
+            heldObject.transform.localPosition = new Vector2(0.05f * -isRight, heldObject.transform.localPosition.y);
 
         if (Input.GetMouseButtonDown(0) && EquipedItem.canUse)
         {
             EquipedItem.canUse = false;
             EquipedItem.Use();
+        }
+
+        if (Input.mouseScrollDelta.y > 0 && EquipedItem.canUse)
+        {
+            GameObject tempObject = Inventory.MoveHotBarToRight();
+            if (tempObject != null)
+            {
+                heldObject = tempObject;
+                EquipedItem.currentObject = heldObject;
+            }
+            else
+            {
+                heldObject = null;
+                EquipedItem.currentObject = null;
+            }
+
+        }
+
+        if (Input.mouseScrollDelta.y < 0 && EquipedItem.canUse)
+        {
+            GameObject tempObject = Inventory.MoveHotBarToLeft();
+            if (tempObject != null)
+            {
+                heldObject = tempObject;
+                EquipedItem.currentObject = heldObject;
+            }
+            else
+            {
+                heldObject = null;
+                EquipedItem.currentObject = null;
+            }
         }
 
         cam.transform.position = new Vector3(transform.position.x, transform.position.y, -5);

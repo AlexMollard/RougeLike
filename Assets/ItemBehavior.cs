@@ -12,6 +12,8 @@ public class ItemBehavior : MonoBehaviour
     public int amount;
     public Sprite invIcon;
     public int ID = 1;
+    public bool CanCutWood = false;
+    public bool CanFish = false;
 
     // Update is called once per frame
     void Update()

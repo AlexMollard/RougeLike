@@ -6,6 +6,16 @@ public class InventoryManager : MonoBehaviour
 {
     public List<ItemBehavior> items;
     public HotBarSlot[] HotBar;
+    public HotBarSlot currentHotBar;
+    public int currentIndex;
+
+    public void UpdateHotBar()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            HotBar[i].updateSelection((i == currentIndex) ? true : false);
+        }
+    }
 
     public bool AddToHotBar(ItemBehavior item)
     {
@@ -21,24 +31,36 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    public void MoveHotBarToRight()
+    public GameObject MoveHotBarToRight()
     {
-        HotBarSlot tempSlot = HotBar[3];
-        for (int i = 1; i < 4; i++)
-        {
-            HotBar[i] = HotBar[i - 1];
-        }
-        HotBar[0] = tempSlot;
+        currentIndex++;
+
+        if (currentIndex == 4)
+            currentIndex = 0;
+
+        currentHotBar = HotBar[currentIndex];
+        UpdateHotBar();
+
+        if (HotBar[currentIndex].item)
+            return HotBar[currentIndex].item.gameObject;
+        else
+            return null;
     }
 
-    public void MoveHotBarToLeft()
+    public GameObject MoveHotBarToLeft()
     {
-        HotBarSlot tempSlot = HotBar[0];
-        for (int i = 0; i > 3; i++)
-        {
-            HotBar[i + 1] = HotBar[i];
-        }
-        HotBar[3] = tempSlot;
+        currentIndex--;
+
+        if (currentIndex < 0)
+            currentIndex = 3;
+
+        currentHotBar = HotBar[currentIndex];
+        UpdateHotBar();
+
+        if (HotBar[currentIndex].item)
+            return HotBar[currentIndex].item.gameObject;
+        else
+            return null;
     }
 
     public bool Contains(int ID)

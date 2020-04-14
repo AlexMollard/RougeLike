@@ -50,8 +50,10 @@ public class TreeBehaviour : MonoBehaviour
         if (collision.transform.name == "HeldItem")
         {
             EquipedItemBehavior item = collision.GetComponent<EquipedItemBehavior>();
+            if (item.currentObject == null)
+                return;
 
-            if (item.canCutWood && item.hit == false && !item.canUse)
+            if (item.hit == false && !item.canUse && item.currentObject.GetComponent<ItemBehavior>().CanCutWood)
             {
                 item.hit = true;
                 DropItem();

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1601898653543899554
+--- !u!1 &292973744456169896
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4862313699388153439}
-  - component: {fileID: 7628784749346985206}
-  - component: {fileID: 8085569996504590748}
-  - component: {fileID: 4444790421433931630}
+  - component: {fileID: 5118601408433822440}
+  - component: {fileID: 739040844177911650}
+  - component: {fileID: 5440966241003457720}
+  - component: {fileID: 4777946022351526871}
   m_Layer: 0
-  m_Name: Axe
+  m_Name: FishingRod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4862313699388153439
+--- !u!4 &5118601408433822440
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601898653543899554}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 0, z: 0}
+  m_GameObject: {fileID: 292973744456169896}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.3717752, y: 2.7083354, z: -550.8037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7628784749346985206
+--- !u!212 &739040844177911650
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601898653543899554}
+  m_GameObject: {fileID: 292973744456169896}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 478648587
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 8a35ecd52143109408ebfdae881f8e0b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e62e0ca56a1dbbf42ac6f6b723d16292, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,13 +83,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8085569996504590748
+--- !u!114 &5440966241003457720
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601898653543899554}
+  m_GameObject: {fileID: 292973744456169896}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92889d5c2a491d243b4e92ed2dd4f807, type: 3}
@@ -100,17 +100,17 @@ MonoBehaviour:
   tile: {fileID: 0}
   isOnGround: 0
   amount: 0
-  invIcon: {fileID: 21300000, guid: 604066669dbb65240962f3d4da699f61, type: 3}
-  ID: 2
-  CanCutWood: 1
-  CanFish: 0
---- !u!61 &4444790421433931630
+  invIcon: {fileID: 21300000, guid: 796cae48e3a3e5947bfa5492818dd1ce, type: 3}
+  ID: 5
+  CanCutWood: 0
+  CanFish: 1
+--- !u!61 &4777946022351526871
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1601898653543899554}
+  m_GameObject: {fileID: 292973744456169896}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}

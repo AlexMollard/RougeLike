@@ -23,7 +23,6 @@ public class EquipedItemBehavior : MonoBehaviour
     public GameObject currentObject;
     public Sprite currentSprite;
 
-    public bool canCutWood = true;
     public bool hit = false;
 
     private void Start()
@@ -33,7 +32,12 @@ public class EquipedItemBehavior : MonoBehaviour
 
     void Update()
     {
-        if (currentObject.GetComponent<SpriteRenderer>().sprite != currentSprite)
+        if (currentObject == null)
+        {
+            currentSprite = null;
+            GetComponent<SpriteRenderer>().sprite = null;
+        }
+        else if (currentObject.GetComponent<SpriteRenderer>().sprite != currentSprite)
         {
             currentSprite = currentObject.GetComponent<SpriteRenderer>().sprite;
             GetComponent<SpriteRenderer>().sprite = currentSprite;
