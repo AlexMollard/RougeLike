@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class HotBarSlot : MonoBehaviour
 {
     public Sprite icon;
@@ -10,6 +10,21 @@ public class HotBarSlot : MonoBehaviour
     public Image image;
     public GameObject border;
     public bool selected;
+    public TextMeshProUGUI amoutText;
+
+    private void Update()
+    {
+
+        if (item)
+        {
+            amoutText.text = item.amount.ToString();
+            amoutText.gameObject.SetActive(true);
+        }
+        else
+        {
+            amoutText.gameObject.SetActive(false);
+        }
+    }
 
     public void updateSelection(bool isSelected)
     {
@@ -25,10 +40,10 @@ public class HotBarSlot : MonoBehaviour
         }
     }
 
-    public void SetItem(ItemBehavior newItem, Sprite newIcon)
+    public void SetItem(ItemBehavior newItem)
     {
-        icon = newIcon;
         item = newItem;
+        icon = item.invIcon;
 
         image.sprite = icon;
     }

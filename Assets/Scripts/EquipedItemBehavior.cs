@@ -77,6 +77,14 @@ public class EquipedItemBehavior : MonoBehaviour
         coolDownTimer = coolDown;
         defaultPos = transform.localPosition;
         targetPos = transform.right + transform.localPosition;
+
+        if (currentObject == null)
+            return;
+       
+        if (currentObject.GetComponent<ItemBehavior>().CanFish)
+        {
+            currentObject.GetComponent<FishingRodBehaviour>().Cast();
+        }
     }
 
 }

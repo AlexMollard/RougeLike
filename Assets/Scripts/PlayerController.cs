@@ -19,9 +19,11 @@ public class PlayerController : MonoBehaviour
     public List<List<GameObject>> tiles;
 
     public InventoryManager Inventory;
+    public BackPackManager backPack;
+    public GameObject backPackWindow;
+    bool firstframe = true;
 
     Vector2 movement;
-    int woodTotal = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,34 +61,25 @@ public class PlayerController : MonoBehaviour
             EquipedItem.Use();
         }
 
-        if (Input.mouseScrollDelta.y > 0 && EquipedItem.canUse)
-        {
-            GameObject tempObject = Inventory.MoveHotBarToRight();
-            if (tempObject != null)
-            {
-                heldObject = tempObject;
-                EquipedItem.currentObject = heldObject;
-            }
-            else
-            {
-                heldObject = null;
-                EquipedItem.currentObject = null;
-            }
-
-        }
-
         if (Input.mouseScrollDelta.y < 0 && EquipedItem.canUse)
         {
-            GameObject tempObject = Inventory.MoveHotBarToLeft();
-            if (tempObject != null)
+            Inventory.MoveHotBarToRight();
+        }
+
+        if (Input.mouseScrollDelta.y > 0 && EquipedItem.canUse)
+        {
+            Inventory.MoveHotBarToLeft();
+        }
+
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            if (backPackWindow.activeSelf)
             {
-                heldObject = tempObject;
-                EquipedItem.currentObject = heldObject;
+                backPackWindow.SetActive(false);
             }
             else
             {
-                heldObject = null;
-                EquipedItem.currentObject = null;
+                backPackWindow.SetActive(true);
             }
         }
 
@@ -101,17 +94,7 @@ public class PlayerController : MonoBehaviour
 
     public bool PickUp(ItemBehavior item)
     {
-        if (!Inventory.Contains(item.ID))
-        {
-            Inventory.Add(item);
-            Inventory.AddToHotBar(item);
-            item.gameObject.SetActive(false);
-            return true;
-        }
-
-        Destroy(item.gameObject);
-        Inventory.Get(item.ID).amount++;
-
+        Inventory.Add(item);
         return true;
     }
 }

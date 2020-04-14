@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4475461617947021962}
   - component: {fileID: 5794556139562657592}
   - component: {fileID: 8519177948545969377}
+  - component: {fileID: -2888240461660416680}
   m_Layer: 0
   m_Name: FishingBobber
   m_TagString: Untagged
@@ -50,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,3 +97,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cosineAmount: 0.01
   orginalPos: {x: 0, y: 0}
+--- !u!50 &-2888240461660416680
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309297066901997590}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 62272598d83e7e74d87afbe4b5bd3c17, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,9 +99,11 @@ MonoBehaviour:
   currentLifeTime: 0
   tile: {fileID: 0}
   isOnGround: 0
-  amount: 0
+  amount: 1
   invIcon: {fileID: 21300000, guid: b5807fdf1866cbb43b2cf0a26d615307, type: 3}
   ID: 1
+  CanCutWood: 0
+  CanFish: 0
 --- !u!61 &1583312986687024545
 BoxCollider2D:
   m_ObjectHideFlags: 0

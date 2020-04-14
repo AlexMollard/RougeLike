@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5118601408433822440}
   - component: {fileID: 739040844177911650}
   - component: {fileID: 5440966241003457720}
+  - component: {fileID: 4434735216262305530}
   - component: {fileID: 4777946022351526871}
   m_Layer: 0
   m_Name: FishingRod
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292973744456169896}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3717752, y: 2.7083354, z: -550.8037}
+  m_LocalPosition: {x: -0.05, y: 2.7083354, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,11 +100,25 @@ MonoBehaviour:
   currentLifeTime: 1
   tile: {fileID: 0}
   isOnGround: 0
-  amount: 0
+  amount: 256
   invIcon: {fileID: 21300000, guid: 796cae48e3a3e5947bfa5492818dd1ce, type: 3}
   ID: 5
   CanCutWood: 0
   CanFish: 1
+  stackIndex: 0
+--- !u!114 &4434735216262305530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292973744456169896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23446998b4282e84bba1f89bd46927a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobbie: {fileID: 8309297066901997590, guid: 15c966f91cff705468d9ac1af7e4f192, type: 3}
 --- !u!61 &4777946022351526871
 BoxCollider2D:
   m_ObjectHideFlags: 0

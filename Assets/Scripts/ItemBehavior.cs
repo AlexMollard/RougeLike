@@ -9,11 +9,12 @@ public class ItemBehavior : MonoBehaviour
     public float currentLifeTime = 1.0f;
     public TileBehaviour tile;
     public bool isOnGround = false;
-    public int amount;
+    public int amount = 1;
     public Sprite invIcon;
     public int ID = 1;
     public bool CanCutWood = false;
     public bool CanFish = false;
+    public int stackIndex = 0;
 
     // Update is called once per frame
     void Update()
