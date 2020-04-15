@@ -7,14 +7,31 @@ public class FishingRodBehaviour : MonoBehaviour
     bool isCast = false;
     public GameObject bobbie;
     GameObject playerObject;
-    GameObject fishingSpotPrefab;
+    GameObject boi;
+    float timeInWater = 0.0f;
+    float biteTime = 1.0f;
+    float pullIn = 1.0f;
+    float pullInTimer = 0.0f;
+    GameObject currentPool;
+    bool inWater = false;
+    private void Start()
+    {
+        playerObject = GameObject.FindWithTag("Player");
+    }
 
     public void Cast()
     {
         if (isCast)
         {
+            PullIn();
             return;
         }
+
+
+        if (Vector2.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), playerObject.transform.position) > 1)
+            return;
+
+        boi = Instantiate(bobbie, playerObject.transform.position, Quaternion.identity);
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -22,13 +39,20 @@ public class FishingRodBehaviour : MonoBehaviour
         {
             if(hit.transform.GetComponent<FishingSpotBehaviour>())
             {
-                Debug.Log("Water ahoy");
+                currentPool = hit.transform.gameObject;
+                HitWater();
+            }
+            if (hit.transform.GetComponent<TileBehaviour>() == null)
+            {
+                boi.GetComponent<BobberBehaviour>().inWater = true;
             }
         }
 
-        playerObject = GameObject.FindWithTag("Player");
+        isCast = true;
         
-        GameObject boi = Instantiate(bobbie);
+        boi.GetComponent<Rope>().player = playerObject;
+        boi.GetComponent<Rope>().rod = gameObject;
+
 
         Vector2 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -41,5 +65,53 @@ public class FishingRodBehaviour : MonoBehaviour
 
         boi.GetComponent<BobberBehaviour>().SetPoints(pointOne, pointTwo, mousePos);
     
+    }
+
+    void HitWater()
+    {
+        timeInWater = 0.0f;
+        biteTime = Random.Range(1.5f, 3.0f);
+        inWater = true;
+        boi.GetComponent<BobberBehaviour>().inFishingSpot = true;
+        boi.GetComponent<BobberBehaviour>().inWater = true;
+    }
+
+    void PullIn()
+    {
+        if (inWater == true)
+        {
+            if (timeInWater > biteTime && pullInTimer < pullIn)
+            {
+                GameObject fish = currentPool.GetComponent<FishingSpotBehaviour>().GetFish();
+                Instantiate(fish, playerObject.transform.position, Quaternion.identity);
+            }
+        }
+
+        inWater = false;
+        pullInTimer = 0.0f;
+        isCast = false;
+        Destroy(boi);
+    }
+
+    public void UpdateTimers()
+    {
+        timeInWater += Time.deltaTime;
+
+        if (timeInWater > biteTime)
+        {
+            boi.GetComponent<BobberBehaviour>().bite = true;
+            pullInTimer += Time.deltaTime;
+            
+            if (pullInTimer > pullIn)
+                boi.GetComponent<BobberBehaviour>().bite = false;
+        }
+    }
+
+    public void TestDistance()
+    {
+        if (Vector2.Distance(boi.transform.position, playerObject.transform.position) > 1)
+        {
+            PullIn();
+        }
     }
 }

@@ -17,8 +17,15 @@ public class HotBarSlot : MonoBehaviour
 
         if (item)
         {
-            amoutText.text = item.amount.ToString();
-            amoutText.gameObject.SetActive(true);
+            if (item.amount > 1)
+            {
+                amoutText.text = item.amount.ToString();
+                amoutText.gameObject.SetActive(true);
+            }
+            else
+            {
+                amoutText.gameObject.SetActive(false);
+            }
         }
         else
         {

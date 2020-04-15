@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class FishingSpotBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject[] fish;
 
-    // Update is called once per frame
-    void Update()
+    public GameObject GetFish()
     {
-        
+        return fish[Random.Range(0,fish.Length)];
     }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7732988332275670982}
   - component: {fileID: -1642625285471267859}
   - component: {fileID: 2507035167036662769}
+  - component: {fileID: 2252870393956788395}
   m_Layer: 0
   m_Name: FishingSpot
   m_TagString: Untagged
@@ -95,6 +96,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7e5b051608a3264ba5d85e352f64502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fish:
+  - {fileID: 7869939737338107336, guid: 9206114f29245f64b937329b4b11d1ce, type: 3}
+  - {fileID: 2735418822165019270, guid: f285cf931c391c14cb67d07b200ebb8c, type: 3}
+  - {fileID: 4385512904274161491, guid: 4c245091c4e41a349923a677c1b3d011, type: 3}
+  - {fileID: 260885069721017562, guid: 0c03df7755d6fec4fa74d2b84493fb2c, type: 3}
 --- !u!61 &2507035167036662769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -121,3 +127,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &2252870393956788395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8415972619635994471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb1bd003ae2046408e9c56da85cebc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: e55961de33e07ea43859bac3a1f231f5, type: 3}
+  - {fileID: 21300000, guid: 602440b73b97df644a1d2c1763d10f5c, type: 3}
+  - {fileID: 21300000, guid: 67f353e91facc0f43b17bc48a7a8a6f8, type: 3}
+  - {fileID: 21300000, guid: 20198a825f6002747b85d1f6f7f5a8f5, type: 3}

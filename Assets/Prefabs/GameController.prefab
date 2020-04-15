@@ -57,6 +57,7 @@ MonoBehaviour:
   - {r: 1, g: 0, b: 1, a: 0}
   - {r: 0, g: 1, b: 1, a: 0}
   - {r: 0.4, g: 0.3, b: 0.2, a: 0}
+  nonGroundTiles: ffffffff0100000009000000
   emptyTilePrefab: {fileID: 2202312360390123838, guid: 2cabde84554fbb24f9901092353d0935,
     type: 3}
   tilePrefabs:

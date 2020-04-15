@@ -11,7 +11,7 @@ public class MapGen : MonoBehaviour
     public float doubleWideRoomChance = 0.25f;
 
     public Color[] typeColors;
-
+    public TileType[] nonGroundTiles;
     public GameObject emptyTilePrefab;
     public GameObject[] tilePrefabs;
     public Sprite roomLayout;
@@ -98,7 +98,7 @@ public class MapGen : MonoBehaviour
 
 
                 // Places floor under entity (NEEDS TO BE UPDATED FOR MORE THEN ONE DIFFRENT GROUND TYPE)
-                if (currentType != TileType.Ground && currentType != TileType.Grass && currentType != TileType.Empty && currentType != TileType.Wall && currentType != TileType.Planks)
+                if (currentType != TileType.Ground && currentType != TileType.Grass && currentType != TileType.Empty && currentType != TileType.Wall && currentType != TileType.Planks && currentType != TileType.FishingSpot)
                     Instantiate(tilePrefabs[(int)TileType.Grass], tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
             }
         }
@@ -121,10 +121,10 @@ public class MapGen : MonoBehaviour
     {
         if (currentTile == null)
         {
-        Debug.LogError("It was null " + x + ", "+ y);
+            Debug.LogError("It was null " + x + ", "+ y);
             return;
-
         }
+
         WallBehaviour wall = currentTile.GetComponent<WallBehaviour>();
 
         bool top = false, right = false, bottom = false, left = false, floorAbove = false, floorBelow = false, floorRight = false, floorLeft = false;
@@ -135,7 +135,7 @@ public class MapGen : MonoBehaviour
                 right = true;
 
 
-            if (tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x + 1, y))
                 floorRight = true;
         }
 
@@ -144,7 +144,7 @@ public class MapGen : MonoBehaviour
             if (tiles[x - 1][y].GetComponent<TileBehaviour>().type == TileType.Wall)
                 left = true;
 
-            if (tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x - 1, y))
                 floorLeft = true;
         }
 
@@ -153,7 +153,7 @@ public class MapGen : MonoBehaviour
             if (tiles[x][y + 1].GetComponent<TileBehaviour>().type == TileType.Wall)
                 top = true;
 
-            if (tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x, y + 1))
                 floorAbove = true;
         }
 
@@ -162,7 +162,7 @@ public class MapGen : MonoBehaviour
             if (tiles[x][y - 1].GetComponent<TileBehaviour>().type == TileType.Wall)
                 bottom = true;
 
-            if (tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x,y - 1))
                 floorBelow = true;
         }
         wall.SetWall(top, right, bottom, left, floorAbove, floorBelow, floorRight, floorLeft);
@@ -233,47 +233,57 @@ public class MapGen : MonoBehaviour
         }
     }
 
+    bool IsNonGroundTile(int x, int y)
+    {
+        for (int i = 0; i < nonGroundTiles.Length; i++)
+        {
+            if (tiles[x][y].GetComponent<TileBehaviour>().type == nonGroundTiles[i])
+                return true;
+        }
+        return false;
+    }
+
     int GetGroundCount(int x, int y)
     {
         int totalGroundTiles = 0;
 
         if (x < mapSize * roomSize - 1)
-            if (tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x + 1][y].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x + 1, y))
                 totalGroundTiles++;
 
         if (x > 0)
-            if (tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x - 1][y].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x - 1, y))
                 totalGroundTiles++;
 
         if (y < mapSize * roomSize - 1)
         {
-            if (tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x][y + 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x,y + 1))
                 totalGroundTiles++;
 
             // Top - Left
             if (x > 0)
-                if (tiles[x - 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x - 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x - 1][y + 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+                if (!IsNonGroundTile(x - 1, y + 1))
                     totalGroundTiles++;
 
             // Top - Right
             if (x < mapSize * roomSize - 1)
-                if (tiles[x + 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x + 1][y + 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x + 1][y + 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+                if (!IsNonGroundTile(x + 1, y + 1))
                     totalGroundTiles++;
         }
 
         if (y > 0)
         {
-            if (tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x][y - 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+            if (!IsNonGroundTile(x, y - 1))
                 totalGroundTiles++;
 
             // Bottom - Left
             if (x > 0)
-                if (tiles[x - 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x - 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x - 1][y - 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+                if (!IsNonGroundTile(x - 1, y - 1))
                     totalGroundTiles++;
 
             // Bottom - Right
             if (x < mapSize * roomSize - 1)
-                if (tiles[x + 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Empty && tiles[x + 1][y - 1].GetComponent<TileBehaviour>().type != TileType.Wall && tiles[x + 1][y - 1].GetComponent<TileBehaviour>().type != TileType.FishingSpot)
+                if (!IsNonGroundTile(x + 1, y - 1))
                     totalGroundTiles++;
         }
 
