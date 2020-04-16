@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public InventoryManager Inventory;
     public BackPackManager backPack;
     public GameObject backPackWindow;
-    bool firstframe = true;
+    bool inBackPack = false;
 
     Vector2 movement;
     // Start is called before the first frame update
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
         if (heldObject)
             heldObject.transform.localPosition = new Vector2(0.05f * -isRight, heldObject.transform.localPosition.y);
 
-        if (Input.GetMouseButtonDown(0) && EquipedItem.canUse)
+        if (Input.GetMouseButtonDown(0) && EquipedItem.canUse && !inBackPack)
         {
             EquipedItem.canUse = false;
             EquipedItem.Use();
@@ -76,10 +76,12 @@ public class PlayerController : MonoBehaviour
             if (backPackWindow.activeSelf)
             {
                 backPackWindow.SetActive(false);
+                inBackPack = false;
             }
             else
             {
                 backPackWindow.SetActive(true);
+                inBackPack = true;
             }
         }
 

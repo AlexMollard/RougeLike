@@ -13,6 +13,8 @@ public class MapGen : MonoBehaviour
     public Color[] typeColors;
     public TileType[] nonGroundTiles;
     public GameObject emptyTilePrefab;
+    public GameObject waterTilePrefab;
+    public GameObject waterMoundTilePrefab;
     public GameObject[] tilePrefabs;
     public Sprite roomLayout;
     public Sprite largeRoomLayout;
@@ -69,6 +71,18 @@ public class MapGen : MonoBehaviour
             {
                 if (tiles[x][y].GetComponent<TileBehaviour>().type == TileType.Empty)
                 {
+                    if (Random.value > 0.8f)
+                    {
+                        if (Random.value > 0.025f)
+                        {
+                            Instantiate(waterTilePrefab, tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
+                        }
+                        else
+                        {
+                            Instantiate(waterMoundTilePrefab, tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
+                        }
+                    }
+
                     tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
                     continue;
                 }
@@ -77,11 +91,6 @@ public class MapGen : MonoBehaviour
 
                 SetWalls(x, y);
 
-                // if (GetWallCount(x, y) >= 5)
-                // {
-                //     current.type = TileType.Empty;
-                //     continue;
-                // }
 
                 TileType currentType = current.type;
 
@@ -487,6 +496,9 @@ public class MapGen : MonoBehaviour
             }
 
             roomIndex = Random.Range(0, surroundingRooms.Count);
+
+            if (surroundingRooms.Count == 0)
+                return;
 
             
             currentRoomPos = surroundingRooms[roomIndex].GetComponent<TileBehaviour>().tilePos;

@@ -104,6 +104,9 @@ MonoBehaviour:
   ID: 1
   CanCutWood: 0
   CanFish: 0
+  stackIndex: 0
+  maxStack: 99
+  name: Log
 --- !u!61 &1583312986687024545
 BoxCollider2D:
   m_ObjectHideFlags: 0

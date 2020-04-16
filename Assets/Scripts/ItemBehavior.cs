@@ -15,6 +15,8 @@ public class ItemBehavior : MonoBehaviour
     public bool CanCutWood = false;
     public bool CanFish = false;
     public int stackIndex = 0;
+    public int maxStack = 99;
+    public string name;
 
     // Update is called once per frame
     void Update()
@@ -57,4 +59,10 @@ public class ItemBehavior : MonoBehaviour
             }
         }
     }
+
+    private void OnMouseOver()
+    {
+        MouseOverBehaviour.SetText(name);
+    }
+
 }

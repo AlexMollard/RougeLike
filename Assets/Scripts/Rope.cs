@@ -13,7 +13,7 @@ public class Rope : MonoBehaviour
     Vector2 StartPos;
     Vector2 EndPos;
     int frameCount = 0;
-    int unwindAmount = 100;
+    int unwindAmount = 1000;
     public GameObject player;
     GameObject heldObject;
     public GameObject rod;
@@ -36,7 +36,7 @@ public class Rope : MonoBehaviour
 
     void UnWind()
     {
-        ropeSegLen += ropeSegLenMultiplier;
+        ropeSegLen -= ropeSegLenMultiplier;
     }
 
     private void Update()
@@ -55,7 +55,7 @@ public class Rope : MonoBehaviour
 
     public void UpdateStartPos()
     {
-        StartPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        StartPos = new Vector2(heldObject.transform.position.x, heldObject.transform.position.y);
     }
 
     private void FixedUpdate()

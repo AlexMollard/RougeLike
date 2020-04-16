@@ -104,6 +104,9 @@ MonoBehaviour:
   ID: 3
   CanCutWood: 0
   CanFish: 0
+  stackIndex: 0
+  maxStack: 99
+  name: Health
 --- !u!61 &-6344609142477242028
 BoxCollider2D:
   m_ObjectHideFlags: 0

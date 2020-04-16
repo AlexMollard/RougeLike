@@ -104,6 +104,9 @@ MonoBehaviour:
   ID: 4
   CanCutWood: 0
   CanFish: 0
+  stackIndex: 0
+  maxStack: 99
+  name: Stamina
 --- !u!61 &5459344778805433668
 BoxCollider2D:
   m_ObjectHideFlags: 0

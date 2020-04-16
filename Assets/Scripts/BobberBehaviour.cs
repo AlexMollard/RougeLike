@@ -35,7 +35,7 @@ public class BobberBehaviour : MonoBehaviour
             Vector3 m2 = Vector3.Lerp(point[1], point[2], count);
             transform.position = Vector3.Lerp(m1, m2, count);
         }
-        else if (inWater)
+        else if (inFishingSpot)
         {
             if (bite)
             {
@@ -50,10 +50,7 @@ public class BobberBehaviour : MonoBehaviour
 
                 transform.position = new Vector2(point[2].x, point[2].y + Mathf.Cos(timer) * cosineAmount);
 
-                if (!inFishingSpot)
-                {
-                    ps.emissionRate = 1.5f;
-                }
+                ps.emissionRate = 1.5f;
             }
         }
         else

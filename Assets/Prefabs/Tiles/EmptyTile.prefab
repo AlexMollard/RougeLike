@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilePos: {x: 0, y: 0}
-  type: 0
+  type: -1
   tile: {fileID: 0}
   hasItem: 0
 --- !u!212 &5134745648413310196

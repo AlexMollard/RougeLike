@@ -105,6 +105,8 @@ MonoBehaviour:
   CanCutWood: 1
   CanFish: 0
   stackIndex: 0
+  maxStack: 99
+  name: Axe
 --- !u!61 &4444790421433931630
 BoxCollider2D:
   m_ObjectHideFlags: 0

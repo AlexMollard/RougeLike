@@ -101,6 +101,12 @@ MonoBehaviour:
   - {fileID: 2735418822165019270, guid: f285cf931c391c14cb67d07b200ebb8c, type: 3}
   - {fileID: 4385512904274161491, guid: 4c245091c4e41a349923a677c1b3d011, type: 3}
   - {fileID: 260885069721017562, guid: 0c03df7755d6fec4fa74d2b84493fb2c, type: 3}
+  - {fileID: 2187495459197169236, guid: d4df29a34930dc74b836ef3f5247f82a, type: 3}
+  - {fileID: 8771155084415615232, guid: 139055cd5f4b9df4d820971ce88c0ea0, type: 3}
+  - {fileID: 3360499330738931000, guid: 3b1267072c1ffa74f9a031e2c845d7bb, type: 3}
+  - {fileID: 6408223477838253517, guid: b483d2fd70c961f45bf08acd9fe54479, type: 3}
+  lastCommonIndex: 3
+  lastUnCommonIndex: 5
 --- !u!61 &2507035167036662769
 BoxCollider2D:
   m_ObjectHideFlags: 0

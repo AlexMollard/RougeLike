@@ -102,6 +102,8 @@ MonoBehaviour:
   cosineAmount: 0.01
   orginalPos: {x: 0, y: 0}
   bite: 0
+  inWater: 0
+  inFishingSpot: 0
 --- !u!50 &-2888240461660416680
 Rigidbody2D:
   serializedVersion: 4
@@ -161,7 +163,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 942066573
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}

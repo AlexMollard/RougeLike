@@ -106,6 +106,8 @@ MonoBehaviour:
   CanCutWood: 0
   CanFish: 1
   stackIndex: 0
+  maxStack: 99
+  name: Fishing Rod
 --- !u!114 &4434735216262305530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bobbie: {fileID: 8309297066901997590, guid: 15c966f91cff705468d9ac1af7e4f192, type: 3}
+  minBiteTime: 2
+  maxBiteTime: 5
+  timeToPullIn: 0.75
 --- !u!61 &4777946022351526871
 BoxCollider2D:
   m_ObjectHideFlags: 0

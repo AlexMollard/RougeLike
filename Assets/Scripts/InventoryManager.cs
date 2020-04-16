@@ -10,6 +10,37 @@ public class InventoryManager : MonoBehaviour
     public BackPackManager backPack;
     public PlayerController player;
     public int currentIndex;
+    public GameObject itemDisplay;
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Alpha1))
+            SetCurrentHotBar(0);
+
+        if (Input.GetKey(KeyCode.Alpha2))
+            SetCurrentHotBar(1);
+
+        if (Input.GetKey(KeyCode.Alpha3))
+            SetCurrentHotBar(2);
+
+        if (Input.GetKey(KeyCode.Alpha4))
+            SetCurrentHotBar(3);
+
+        if (Input.GetKey(KeyCode.Alpha5))
+            SetCurrentHotBar(4);
+
+        if (Input.GetKey(KeyCode.Alpha6))
+            SetCurrentHotBar(5);
+    }
+
+
+    public void SetCurrentHotBar(int index)
+    {
+        currentIndex = index;
+        currentHotBar = HotBar[currentIndex];
+        UpdateHotBar();
+        UpdateHeldItem();
+    }
 
     public void UpdateHotBar()
     {
@@ -61,13 +92,11 @@ public class InventoryManager : MonoBehaviour
     {
         if (HotBar[currentIndex].item != null)
         {
-            player.EquipedItem.currentObject = HotBar[currentIndex].item.gameObject;
-            player.heldObject = HotBar[currentIndex].item.gameObject;
+            player.EquipedItem.currentObject = HotBar[currentIndex].item.gameObject;;
         }
         else
         {
             player.EquipedItem.currentObject = null;
-            player.heldObject = null;
         }
     }
 
@@ -83,12 +112,14 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(ItemBehavior item)
     {
+
         if (Contains(item.ID))
         {
-            if (Get(item.ID).amount < 99)
+            if (Get(item.ID).amount < item.maxStack)
             {
                 Get(item.ID).amount += item.amount;
                 Destroy(item.gameObject);
+                itemDisplay.GetComponent<ItemDisplay>().DisplayItem(item);
                 return;
             }
             else
@@ -96,6 +127,7 @@ public class InventoryManager : MonoBehaviour
                 return;
             }
         }
+        itemDisplay.GetComponent<ItemDisplay>().DisplayItem(item);
 
         item.gameObject.SetActive(false);
         items.Add(item);
@@ -104,11 +136,6 @@ public class InventoryManager : MonoBehaviour
         {
             backPack.AddItem(item);
         }
-    }
-
-    public void CreateNewStack(ItemBehavior item)
-    {
-
     }
 
     public ItemBehavior Get(int ID)

@@ -9,21 +9,22 @@ public class ParallaxBehaviour : MonoBehaviour
     public float speed;
     Vector2 movement;
     GameObject playerObject;
-    Vector2 spawnPos;
+    float timePassed = 0.0f;
 
-    private void Start()
-    {
-        spawnPos = transform.position;
-    }
     // Update is called once per frame
     void Update()
     {
+        timePassed += Time.deltaTime / 4;
+
         if (playerObject == null)
             playerObject = GameObject.FindWithTag("Player");
 
-        movement.x = -playerObject.transform.position.x * speed;
-        movement.y = -playerObject.transform.position.y * speed;
-        transform.position = movement + spawnPos;
+        float time = Time.time;
+        time = time / 10;
+
+        movement.x = Mathf.PerlinNoise(time, time) + timePassed;
+        movement.y = Mathf.PerlinNoise(time + 3, time + 3) + timePassed;
+        transform.position = movement;
 
         if (Vector2.Distance(transform.position,playerObject.transform.position) > 5.0f)
         {

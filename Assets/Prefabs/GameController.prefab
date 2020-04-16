@@ -43,32 +43,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a0a6ea293553a46a68a5c9cfc1f784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 5
-  roomTotal: 5
+  mapSize: 2
+  roomTotal: 1
   doubleRoomChance: 0.5
   doubleHighRoomChance: 0.25
   doubleWideRoomChance: 0.25
   typeColors:
-  - {r: 1, g: 1, b: 1, a: 0}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 0}
   - {r: 0, g: 0, b: 0, a: 0}
   - {r: 1, g: 0, b: 0, a: 0}
   - {r: 0, g: 0, b: 1, a: 0}
   - {r: 0, g: 1, b: 0, a: 0}
   - {r: 1, g: 0, b: 1, a: 0}
-  - {r: 0, g: 1, b: 1, a: 0}
-  - {r: 0.4, g: 0.3, b: 0.2, a: 0}
+  - {r: 0.5, g: 0.4, b: 0.25, a: 0}
+  - {r: 0.28, g: 0.6, b: 0.28, a: 0}
+  - {r: 0, g: 0.3, b: 0, a: 0}
+  - {r: 0.15, g: 0.2, b: 0.3, a: 0}
   nonGroundTiles: ffffffff0100000009000000
   emptyTilePrefab: {fileID: 2202312360390123838, guid: 2cabde84554fbb24f9901092353d0935,
     type: 3}
+  waterTilePrefab: {fileID: 8430870308604287612, guid: cd8eefe4506895e4a820bd3b3086512b,
+    type: 3}
+  waterMoundTilePrefab: {fileID: 8252710431181716638, guid: a307856332a4e3a4688f806093bbd0a6,
+    type: 3}
   tilePrefabs:
-  - {fileID: 9002524105473580752, guid: 135d730da71d0064781e54be8e89185d, type: 3}
+  - {fileID: 2299267809968187866, guid: 437549254b9ac8e409d628782a91452b, type: 3}
   - {fileID: 8790548927548753088, guid: 63049cd4b18937e45978ee73ee302d75, type: 3}
   - {fileID: 3689382188108197211, guid: bdce1f65b5fec2b428af59a1903a9ffe, type: 3}
   - {fileID: 2184372673118449099, guid: 8cba84d0d7726514183a28bcb44fb207, type: 3}
   - {fileID: 8982397402293039270, guid: f4f1be559f0173341b2612ff5db369a3, type: 3}
   - {fileID: 1125139930586663470, guid: 5076e83e5667bc946a7ea6bec59ecc32, type: 3}
-  - {fileID: 3473372039558087851, guid: 5ca34f99f75b593409f0b896a4572e22, type: 3}
   - {fileID: 6931744843311138007, guid: 721b9bbe631c4e04a9bd04b0fd1da4fa, type: 3}
+  - {fileID: 9002524105473580752, guid: 135d730da71d0064781e54be8e89185d, type: 3}
+  - {fileID: 4455985453601952428, guid: cdc2cc72f8a52634e89191cff399c0e8, type: 3}
+  - {fileID: 8415972619635994471, guid: 745214153bc3d30438d5ce575e154324, type: 3}
   roomLayout: {fileID: 21300000, guid: d622b2344f901354bba6915a13a30de3, type: 3}
-  largeRoomLayout: {fileID: 21300000, guid: 676980df0ec21944fb176e0504c8394e, type: 3}
+  largeRoomLayout: {fileID: 21300000, guid: 391a5be70d004e649a6443436a7517ba, type: 3}
   VertRoomLayout: {fileID: 21300000, guid: 4545d569d14549849bb5715e75bb45cf, type: 3}

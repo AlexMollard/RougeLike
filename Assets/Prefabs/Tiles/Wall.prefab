@@ -143,15 +143,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e615d82a9552097499dfe865e2809fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topLeft: {fileID: 21300000, guid: a1a116154411a3d44adde9ef85515a35, type: 3}
-  topCenter: {fileID: 21300000, guid: 44eb60f0a54b53e4097390d0fea65502, type: 3}
-  topRight: {fileID: 21300000, guid: 20d6b80906183b24f9c65af8780c4b2b, type: 3}
-  topInnerLeft: {fileID: 21300000, guid: 4c46f86fd6132a04d8f4f3ac6ca0a1fb, type: 3}
-  topInnerRight: {fileID: 21300000, guid: 8148ac4d21ed6984f9decb68cf0807fc, type: 3}
-  middleLeft: {fileID: 21300000, guid: a0dcbc9682b8e6a49becf564e3f5a73d, type: 3}
-  middleRight: {fileID: 21300000, guid: f0c7506b5fa3ed843a250c87a6a525ff, type: 3}
-  bottomLeft: {fileID: 21300000, guid: 2196b20302a99604c84dffbdde5aaafa, type: 3}
-  bottomCenter: {fileID: 21300000, guid: b3be2f61876039147a2a56389c91da90, type: 3}
-  bottomRight: {fileID: 21300000, guid: 2b02a3e0a8c5880408b3ac45d6d19ed7, type: 3}
-  bottomInnerLeft: {fileID: 21300000, guid: 3a8c9c7154a246048951db603aa6091d, type: 3}
-  bottomInnerRight: {fileID: 21300000, guid: c7c65241cde6ca04fa1666580fbcf120, type: 3}
+  topLeft:
+  - {fileID: 21300000, guid: a1a116154411a3d44adde9ef85515a35, type: 3}
+  topCenter:
+  - {fileID: 21300000, guid: 44eb60f0a54b53e4097390d0fea65502, type: 3}
+  topRight:
+  - {fileID: 21300000, guid: 20d6b80906183b24f9c65af8780c4b2b, type: 3}
+  topInnerLeft:
+  - {fileID: 21300000, guid: 4c46f86fd6132a04d8f4f3ac6ca0a1fb, type: 3}
+  topInnerRight:
+  - {fileID: 21300000, guid: 8148ac4d21ed6984f9decb68cf0807fc, type: 3}
+  middleLeft:
+  - {fileID: 21300000, guid: a0dcbc9682b8e6a49becf564e3f5a73d, type: 3}
+  middleRight:
+  - {fileID: 21300000, guid: f0c7506b5fa3ed843a250c87a6a525ff, type: 3}
+  bottomLeft:
+  - {fileID: 21300000, guid: 2196b20302a99604c84dffbdde5aaafa, type: 3}
+  bottomCenter:
+  - {fileID: 21300000, guid: b3be2f61876039147a2a56389c91da90, type: 3}
+  - {fileID: 21300000, guid: 68434a95898a0904a89f349625e5fc43, type: 3}
+  - {fileID: 21300000, guid: e7a5402925956544d9e359c667ddb77b, type: 3}
+  bottomRight:
+  - {fileID: 21300000, guid: 2b02a3e0a8c5880408b3ac45d6d19ed7, type: 3}
+  bottomInnerLeft:
+  - {fileID: 21300000, guid: 3a8c9c7154a246048951db603aa6091d, type: 3}
+  bottomInnerRight:
+  - {fileID: 21300000, guid: c7c65241cde6ca04fa1666580fbcf120, type: 3}
