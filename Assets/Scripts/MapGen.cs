@@ -71,17 +71,13 @@ public class MapGen : MonoBehaviour
             {
                 if (tiles[x][y].GetComponent<TileBehaviour>().type == TileType.Empty)
                 {
-                    if (Random.value > 0.8f)
-                    {
-                        if (Random.value > 0.025f)
-                        {
-                            Instantiate(waterTilePrefab, tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
-                        }
-                        else
+                        if (Random.value < 0.015f)
                         {
                             Instantiate(waterMoundTilePrefab, tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
                         }
-                    }
+                        else
+                            Instantiate(waterTilePrefab, tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
+                    
 
                     tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
                     continue;
@@ -105,6 +101,10 @@ public class MapGen : MonoBehaviour
                     currentTile.GetComponent<TreeBehaviour>().pos = new Vector2(x,y);
                 }
 
+                if (currentType == TileType.Wall)
+                {
+                    Instantiate(waterTilePrefab, tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
+                }
 
                 // Places floor under entity (NEEDS TO BE UPDATED FOR MORE THEN ONE DIFFRENT GROUND TYPE)
                 if (currentType != TileType.Ground && currentType != TileType.Grass && currentType != TileType.Empty && currentType != TileType.Wall && currentType != TileType.Planks && currentType != TileType.FishingSpot)

@@ -23,6 +23,9 @@ public class FishingRodBehaviour : MonoBehaviour
 
     public void Cast()
     {
+        if (playerObject == null)
+            playerObject = GameObject.FindWithTag("Player");
+
         if (isCast)
         {
             PullIn();

@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 9214247400763911663}
   - component: {fileID: 7681709985459743453}
   - component: {fileID: 2522361386304001770}
-  - component: {fileID: 2200062076735970736}
+  - component: {fileID: 4380840718721618826}
+  - component: {fileID: 8626451542842987986}
+  - component: {fileID: 5556639949070026917}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8430870308604287612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 195943189
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28790e78823e7b84f85b0f5b64042452, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fcc758cd324e67a4bb4cb58305c0c0a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -93,7 +95,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -101,7 +103,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -109,7 +111,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!114 &2200062076735970736
+--- !u!114 &4380840718721618826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -118,10 +120,48 @@ MonoBehaviour:
   m_GameObject: {fileID: 8430870308604287612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb1bd003ae2046408e9c56da85cebc1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ff8281430bd6214eb4c1a8ed3ff471e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 28790e78823e7b84f85b0f5b64042452, type: 3}
-  - {fileID: 21300000, guid: 0d0fe3a1839bff940944e4bb68f3df18, type: 3}
-  - {fileID: 21300000, guid: 47169ee310bdeae41acfc035c43a8b1c, type: 3}
+--- !u!95 &8626451542842987986
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430870308604287612}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9e866d1378803f34bb617da4a5f4dbbc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5556639949070026917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430870308604287612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7e5b051608a3264ba5d85e352f64502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fish:
+  - {fileID: 7869939737338107336, guid: 9206114f29245f64b937329b4b11d1ce, type: 3}
+  - {fileID: 2735418822165019270, guid: f285cf931c391c14cb67d07b200ebb8c, type: 3}
+  - {fileID: 4385512904274161491, guid: 4c245091c4e41a349923a677c1b3d011, type: 3}
+  - {fileID: 260885069721017562, guid: 0c03df7755d6fec4fa74d2b84493fb2c, type: 3}
+  - {fileID: 2187495459197169236, guid: d4df29a34930dc74b836ef3f5247f82a, type: 3}
+  - {fileID: 8771155084415615232, guid: 139055cd5f4b9df4d820971ce88c0ea0, type: 3}
+  - {fileID: 3360499330738931000, guid: 3b1267072c1ffa74f9a031e2c845d7bb, type: 3}
+  - {fileID: 6408223477838253517, guid: b483d2fd70c961f45bf08acd9fe54479, type: 3}
+  lastCommonIndex: 3
+  lastUnCommonIndex: 5

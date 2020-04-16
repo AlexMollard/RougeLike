@@ -43,6 +43,8 @@ public class BobberBehaviour : MonoBehaviour
                 transform.position = new Vector2(point[2].x, point[2].y + Mathf.Cos(timer) * (cosineAmount / 2));
 
                 ps.emissionRate = 20;
+                var main = ps.main;
+                main.simulationSpeed = 1.5f;
             }
             else
             {
