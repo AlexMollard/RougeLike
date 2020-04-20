@@ -5,29 +5,36 @@ using UnityEngine.UI;
 
 public class ItemDisplay : MonoBehaviour
 {
-    public GameObject itemImage;
-    float timer = 0.0f;
-    public float displayTime = 1.5f;
-
-
-    public void Start()
+    public GameObject popUpText;
+    List<PickUpDisplay> pickUps = new List<PickUpDisplay>();
+    List<PickUpDisplay> toBeDeleted = new List<PickUpDisplay>();
+    private void Update()
     {
-        gameObject.SetActive(false);
-    }
+        if (pickUps.Count > 0)
+        {
+            for (int i = 0; i < pickUps.Count; i++)
+            {
+                pickUps[i].UpdateMovement();
+                if (pickUps[i].GetDeleteMe())
+                {
+                    toBeDeleted.Add(pickUps[i]);
+                }
+            }
 
-    public void Update()
-    {
-        timer += Time.deltaTime;
+            for (int i = 0; i < toBeDeleted.Count; i++)
+            {
+                pickUps.Remove(toBeDeleted[i]);
+                Destroy(toBeDeleted[i].gameObject);
+            }
 
-        if (timer > displayTime)
-            gameObject.SetActive(false);
-        
+            toBeDeleted.Clear();
+        }
     }
 
     public void DisplayItem(ItemBehavior item)
     {
-        timer = 0.0f;
-        itemImage.GetComponent<Image>().sprite = item.invIcon;
-        gameObject.SetActive(true);
+        GameObject popUp = Instantiate(popUpText,transform);
+        pickUps.Add(popUp.GetComponent<PickUpDisplay>());
+        pickUps[pickUps.Count - 1].SetAttributes(item,transform.position);
     }
 }

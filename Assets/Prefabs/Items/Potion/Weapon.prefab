@@ -95,18 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92889d5c2a491d243b4e92ed2dd4f807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTimeInSeconds: 10
-  currentLifeTime: 1
-  tile: {fileID: 0}
-  isOnGround: 0
-  amount: 1
+  item: {fileID: 11400000, guid: b0cb7b47bb57f5e48af293f67e9be5f5, type: 2}
   invIcon: {fileID: 21300000, guid: 5b3069bd12593814b865f4effe6f7164, type: 3}
-  ID: 4
-  CanCutWood: 0
-  CanFish: 0
-  stackIndex: 0
   maxStack: 99
-  name: Stamina
 --- !u!61 &5459344778805433668
 BoxCollider2D:
   m_ObjectHideFlags: 0

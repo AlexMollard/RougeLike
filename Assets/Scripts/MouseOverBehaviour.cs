@@ -8,6 +8,7 @@ public class MouseOverBehaviour : MonoBehaviour
 {
     public Vector3 offset = new Vector3(0, 10, 0);
     static TextMeshProUGUI text;
+    static GameObject backGround;
     static float timer;
 
     private static MouseOverBehaviour _Instance = null;
@@ -34,8 +35,8 @@ public class MouseOverBehaviour : MonoBehaviour
 
     private void Start()
     {
-        text = GetComponent<TextMeshProUGUI>();
-        SetActive(false);
+        backGround = gameObject;
+        text = GetComponentInChildren<TextMeshProUGUI>();
     }
     private void Update()
     {
@@ -50,7 +51,7 @@ public class MouseOverBehaviour : MonoBehaviour
 
     static void SetActive(bool status)
     {
-        text.gameObject.SetActive(status);
+        backGround.SetActive(status);
     }
 
     public static void SetText(string name)

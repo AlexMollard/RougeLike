@@ -95,16 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92889d5c2a491d243b4e92ed2dd4f807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTimeInSeconds: 10
-  currentLifeTime: 1
-  tile: {fileID: 0}
-  isOnGround: 0
-  amount: 1
+  item: {fileID: 11400000, guid: ffc0925ca0d80a5428de623b3d53691a, type: 2}
   invIcon: {fileID: 21300000, guid: 2c8e5f98bf74cad41bc9fb0bf836cc97, type: 3}
-  ID: 506
-  CanCutWood: 0
-  CanFish: 0
-  stackIndex: 0
+  maxStack: 99
 --- !u!61 &2508317845909144563
 BoxCollider2D:
   m_ObjectHideFlags: 0

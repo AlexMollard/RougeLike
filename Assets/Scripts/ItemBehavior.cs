@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class ItemBehavior : MonoBehaviour
 {
-    public float lifeTimeInSeconds = 10.0f;
-    float lifeTimeMultiplier;
-    public float currentLifeTime = 1.0f;
-    public TileBehaviour tile;
-    public bool isOnGround = false;
-    public int amount = 1;
+
+    public Item item;
+
+    [HideInInspector]
     public Sprite invIcon;
-    public int ID = 1;
-    public bool CanCutWood = false;
-    public bool CanFish = false;
-    public int stackIndex = 0;
+    [HideInInspector]
     public int maxStack = 99;
-    public string name;
+
+    int ID = 1;
+    string itemName;
+    int amount = 1;
+    float DespawnTime = 10.0f;
+    float lifeTimeMultiplier;
+    float currentLifeTime = 1.0f;
+    TileBehaviour tile;
+    bool isOnGround = false;
+
+    private void Start()
+    {
+        itemName = item.name;
+        invIcon = item.icon;
+        maxStack = item.stackAmount;
+        ID = item.ID;
+    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +42,7 @@ public class ItemBehavior : MonoBehaviour
         isOnGround = true;
         tile.hasItem = true;
         currentLifeTime = 2.0f;
-        lifeTimeMultiplier = 1.0f / (lifeTimeInSeconds);
+        lifeTimeMultiplier = 1.0f / (DespawnTime);
     }
 
     void OnGround()
@@ -62,7 +73,47 @@ public class ItemBehavior : MonoBehaviour
 
     private void OnMouseOver()
     {
-        MouseOverBehaviour.SetText(name);
+        MouseOverBehaviour.SetText(itemName);
+    }
+
+    public int GetAmount()
+    {
+        return amount;
+    }
+
+    public void AddAmount(int toAdd)
+    {
+        amount += toAdd;
+    }
+
+    public void SetAmount(int newAmount)
+    {
+        amount = newAmount;
+    }
+
+    public int GetID()
+    {
+        return ID;
+    }
+
+    public void SetID(int newID)
+    {
+        ID = newID;
+    }
+
+    public TileBehaviour GetTile()
+    {
+        return tile;
+    } 
+
+    public void SetTile(TileBehaviour newTile)
+    {
+        tile = newTile;
+    }
+
+    public string GetName()
+    {
+        return itemName;
     }
 
 }

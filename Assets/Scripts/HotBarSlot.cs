@@ -12,14 +12,21 @@ public class HotBarSlot : MonoBehaviour
     public bool selected;
     public TextMeshProUGUI amoutText;
 
+
+    private void Start()
+    {
+        if (image.sprite == null)
+            image.color = new Color(1, 1, 1, 0);
+    }
+
     private void Update()
     {
 
         if (item)
         {
-            if (item.amount > 1)
+            if (item.GetAmount() > 1)
             {
-                amoutText.text = item.amount.ToString();
+                amoutText.text = item.GetAmount().ToString();
                 amoutText.gameObject.SetActive(true);
             }
             else
@@ -39,7 +46,7 @@ public class HotBarSlot : MonoBehaviour
 
         if (isSelected)
         {
-            border.GetComponent<RectTransform>().sizeDelta = new Vector2(110,110);
+            border.GetComponent<RectTransform>().sizeDelta = new Vector2(115,115);
         }
         else
         {
@@ -53,5 +60,8 @@ public class HotBarSlot : MonoBehaviour
         icon = item.invIcon;
 
         image.sprite = icon;
+
+        if (image.sprite != null)
+            image.color = new Color(1, 1, 1, 1);
     }
 }

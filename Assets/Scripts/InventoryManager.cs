@@ -104,7 +104,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].ID == ID)
+            if (items[i].GetID() == ID)
                 return true;
         }
         return false;
@@ -112,12 +112,12 @@ public class InventoryManager : MonoBehaviour
 
     public void Add(ItemBehavior item)
     {
-
-        if (Contains(item.ID))
+        int itemID = item.GetID();
+        if (Contains(itemID))
         {
-            if (Get(item.ID).amount < item.maxStack)
+            if (Get(itemID).GetAmount() < item.maxStack)
             {
-                Get(item.ID).amount += item.amount;
+                Get(itemID).AddAmount(item.GetAmount());
                 Destroy(item.gameObject);
                 itemDisplay.GetComponent<ItemDisplay>().DisplayItem(item);
                 return;
@@ -142,7 +142,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < items.Count; i++)
         {
-            if (items[i].ID == ID)
+            if (items[i].GetID() == ID)
                 return items[i];
         }
         return null;

@@ -65,19 +65,18 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
             draggedItemRect.position = draggedItemRect.TransformPoint(localPosition);
         }
 
-        if (Input.GetKey(KeyCode.Tab))
+        if (item != null)
         {
-            draggedItemRect.localPosition = spawnPoint;
-        }
-
-        if (item.amount > 1)
-        {
-            amoutText.gameObject.SetActive(true);
-            amoutText.text = item.amount.ToString();
+            if (item.GetAmount() > 1)
+            {
+                amoutText.gameObject.SetActive(true);
+                amoutText.text = item.GetAmount().ToString();
+            }
+            else
+                amoutText.gameObject.SetActive(false);
         }
         else
             amoutText.gameObject.SetActive(false);
-    
     }
 
     public void OnPointerDown(PointerEventData eventData)

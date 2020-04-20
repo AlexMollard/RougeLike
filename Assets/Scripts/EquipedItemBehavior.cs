@@ -81,7 +81,7 @@ public class EquipedItemBehavior : MonoBehaviour
         if (currentObject == null)
             return;
        
-        if (currentObject.GetComponent<ItemBehavior>().CanFish)
+        if (currentObject.GetComponent<FishingRodBehaviour>())
         {
             currentObject.GetComponent<FishingRodBehaviour>().Cast();
         }
