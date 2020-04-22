@@ -461,6 +461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpText: {fileID: 5511937425934778994, guid: 4d07cab603d0f9140a81bf1ee55bcd8b,
     type: 3}
+  player: {fileID: 1125139930586663470}
 --- !u!1 &2554170258453174502
 GameObject:
   m_ObjectHideFlags: 0

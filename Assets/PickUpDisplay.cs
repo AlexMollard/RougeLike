@@ -5,31 +5,49 @@ using TMPro;
 
 public class PickUpDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI amount;
     public TextMeshProUGUI itemName;
-    
-    Vector2 startPos;
-    Vector2 endPos;
+
+    int amountINT;
+    string itemNameSTRING;
+
+    public int itemID;
+
+    Vector3 startPos;
+    Vector3 endPos;
     float timer = 0.0f;
 
     bool DeleteMe = false;
     public void UpdateMovement()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * 1.5f;
 
-        transform.position = Vector2.Lerp(startPos, endPos, timer);
-        transform.localScale = Vector2.Lerp(Vector2.one, Vector2.zero, timer);
+        transform.position = Vector3.Lerp(startPos, endPos, timer);
+        transform.localScale = Vector3.Lerp(Vector3.one, Vector3.zero, timer - 1);
 
-        if (timer > 0.99f)
+        if (timer > 1.99f)
             DeleteMe = true;
     }
 
-    public void SetAttributes(ItemBehavior item, Vector2 startingPos)
+    public void AddAmount(int newAmount)
+    {
+        amountINT += newAmount;
+        UpdateText();
+        timer = 0.0f;
+    }
+
+    public void SetAttributes(ItemBehavior item, Vector3 startingPos)
     {
         startPos = startingPos;
-        endPos = startPos + new Vector2(0,1);
-        amount.text = item.GetAmount().ToString();
-        itemName.text = item.GetName();
+        endPos = startPos + new Vector3(0,40);
+        itemID = item.GetID();
+        amountINT = item.GetAmount();
+        itemNameSTRING = item.GetName();
+        UpdateText();
+    }
+
+    void UpdateText()
+    {
+        itemName.text = amountINT.ToString() + "x " + itemNameSTRING;
     }
 
     public bool GetDeleteMe()

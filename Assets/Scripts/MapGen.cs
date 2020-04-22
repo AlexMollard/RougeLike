@@ -78,7 +78,7 @@ public class MapGen : MonoBehaviour
                         else
                             Instantiate(waterTilePrefab, tiles[x][y].transform.position, Quaternion.identity, tiles[x][y].transform);
                     
-
+                    
                     tiles[x][y].GetComponent<SpriteRenderer>().enabled = false;
                     continue;
                 }

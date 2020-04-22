@@ -1226,7 +1226,12 @@ PrefabInstance:
     - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}
       propertyPath: mapSize
-      value: 1
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6031499144275636494, guid: 4eb54d1c48918804d847afe17cd1a73d,
+        type: 3}
+      propertyPath: roomTotal
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6031499144275636495, guid: 4eb54d1c48918804d847afe17cd1a73d,
         type: 3}

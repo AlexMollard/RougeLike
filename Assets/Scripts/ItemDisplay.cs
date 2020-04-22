@@ -8,6 +8,8 @@ public class ItemDisplay : MonoBehaviour
     public GameObject popUpText;
     List<PickUpDisplay> pickUps = new List<PickUpDisplay>();
     List<PickUpDisplay> toBeDeleted = new List<PickUpDisplay>();
+    public GameObject player;
+
     private void Update()
     {
         if (pickUps.Count > 0)
@@ -33,8 +35,17 @@ public class ItemDisplay : MonoBehaviour
 
     public void DisplayItem(ItemBehavior item)
     {
-        GameObject popUp = Instantiate(popUpText,transform);
+        for (int i = 0; i < pickUps.Count; i++)
+        {
+            if (pickUps[i].itemID == item.GetID())
+            {
+                pickUps[i].AddAmount(item.GetAmount());
+                return;
+            }
+        }
+
+        GameObject popUp = Instantiate(popUpText, transform);
         pickUps.Add(popUp.GetComponent<PickUpDisplay>());
-        pickUps[pickUps.Count - 1].SetAttributes(item,transform.position);
+        pickUps[pickUps.Count - 1].SetAttributes(item, Camera.main.WorldToScreenPoint(player.transform.position) + new Vector3(0,50,0));
     }
 }
